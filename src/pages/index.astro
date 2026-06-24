@@ -11,11 +11,11 @@ const lensCards = [
 ];
 
 const aperRows = [
-  { k: 'Dial reads', v: 'ƒ1.4 – ƒ16' },
-  { k: 'Physical aperture', v: 'Fixed per lens' },
-  { k: 'What moves', v: 'Shutter + ISO (bias)' },
-  { k: 'Preview depth', v: 'Optional · viewfinder only' },
-  { k: 'Saved file', v: 'DNG unmodified' },
+  { k: 'Dial reads', v: 'Simulated ƒ1.4 – ƒ16' },
+  { k: 'Physical aperture', v: 'Fixed per lens (in metadata)' },
+  { k: 'What moves', v: 'Auto exposure bias' },
+  { k: 'Preview depth', v: 'Live depth shader preview' },
+  { k: 'Saved file', v: 'JPEG with embedded depth & matte' },
 ];
 
 const stats = [
@@ -144,7 +144,7 @@ const specs = [
         <div class="mode-card">
           <div class="mono card-letter">A</div>
           <div class="card-title">Aperture priority</div>
-          <p class="card-text">Exposure intent, you set the depth of field in mind, the system finds the exposure. ƒ1.4 to ƒ16.</p>
+          <p class="card-text">Simulated ƒ1.4 to ƒ16. Live depth-synchronized rendering in preview, capturing a processed depth JPEG.</p>
         </div>
       </div>
     </section>
@@ -158,11 +158,11 @@ const specs = [
         </div>
         <div>
           <div class="mono essay-tag">On priority modes</div>
-          <p class="essay-text">Shutter-priority is native to iPhone and honest. You set the ceiling; the sensor finds the light. Aperture-priority is exposure intent, you set the depth of field in mind, the system finds the exposure. Two decisions. Both yours.</p>
+          <p class="essay-text">Shutter-priority is native to iPhone and honest. You set the ceiling; the sensor finds the light. Aperture-priority is computational depth lane, blending exposure intent with live depth-synchronized rendering.</p>
         </div>
         <div>
           <div class="mono essay-tag">On the file</div>
-          <p class="essay-text">In DNG, every frame saves Apple ProRAW, untouched by any look the app makes, exactly what the sensor saw. In JPEG, what you composed is what lands in your library, look baked in. Your choice, on the frame.</p>
+          <p class="essay-text">basic offers ProRAW DNG on rear in S-mode—untouched, exactly what the sensor saw. A-mode and selfie mode save JPEGs. In A-mode, the JPEG embeds native depth map details for post-capture adjustments.</p>
         </div>
       </div>
     </section>
@@ -227,7 +227,7 @@ const specs = [
       <div style="max-width:1100px;margin:0 auto;">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Aperture-priority, honestly</div>
         <h2 class="aperture-title">iPhone has a fixed aperture. We say so.</h2>
-        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:680px;margin:0 0 14px;">In A-mode, the dial sets exposure intent via bias, the system finds the shutter speed and ISO to hold your target. Optional simulated depth of field renders in the live viewfinder only. The DNG is never blurred. The physical aperture is always printed in the readout, not a fiction.</p>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:680px;margin:0 0 14px;">In A-mode, the dial sets simulated f-stop intent (from ƒ1.4 to ƒ16). The physical fixed aperture of the lens is always preserved in the EXIF metadata. Capturing in A-mode commits to a computational JPEG lane that embeds the native depth map and portrait effects matte—allowing full focus control after the shot.</p>
         <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:680px;margin:0 0 44px;">No surprises, and nothing hidden behind a settings screen, because there isn't one. The camera that earns your trust does not hide what it cannot do.</p>
 
         <div class="aperture-grid">
@@ -291,7 +291,7 @@ const specs = [
         <h2 class="app-title">One screen. The whole app.</h2>
         <div class="app-mockups">
           <div class="app-mock-wrap app-left"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
-          <div class="app-mock-wrap app-mid"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="DNG" /></div>
+          <div class="app-mock-wrap app-mid"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="JPEG" /></div>
           <div class="app-mock-wrap app-right"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="JPEG" /></div>
         </div>
       </div>

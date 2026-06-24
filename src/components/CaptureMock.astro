@@ -37,7 +37,7 @@ const {
   class: className = '',
 } = Astro.props;
 
-const actualFormat = selfie ? 'JPEG' : format;
+const actualFormat = (selfie || mode === 'A') ? 'JPEG' : format;
 const isDNG = actualFormat === 'DNG';
 const lensDefault = lens === '1×';
 
