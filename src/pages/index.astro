@@ -1,0 +1,525 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CaptureMock from '../components/CaptureMock.astro';
+
+const lensCards = [
+  { pill: '0.5×', mm: '13mm', desc: 'ultra-wide' },
+  { pill: 'Macro', mm: '13mm close', desc: '~2cm focus · manual' },
+  { pill: '1×', mm: '24mm', desc: 'main · 48MP' },
+  { pill: '2×', mm: '48mm', desc: 'sensor crop of main' },
+  { pill: '5×', mm: '120mm', desc: 'telephoto · 15 Pro Max+' },
+];
+
+const aperRows = [
+  { k: 'Dial reads', v: 'ƒ1.4 – ƒ16' },
+  { k: 'Physical aperture', v: 'Fixed per lens' },
+  { k: 'What moves', v: 'Shutter + ISO (bias)' },
+  { k: 'Preview depth', v: 'Optional · viewfinder only' },
+  { k: 'Saved file', v: 'DNG unmodified' },
+];
+
+const stats = [
+  { label: 'Cold launch to frame', val: '< 1.5s' },
+  { label: 'Shutter to ready', val: '< 0.3s' },
+  { label: 'Preview frame rate', val: '120fps' },
+];
+
+const gestures = [
+  { g: 'Swipe down', a: 'Cycle look, Mono / Faded / Neutral' },
+  { g: 'Swipe left / right', a: 'Switch rear lens, 0.5× / Macro / 1× / 2× / 5×' },
+  { g: 'Tap frame', a: 'Set focus and meter point' },
+  { g: 'Long-press frame', a: 'Lock AE/AF, holds both' },
+  { g: 'Two-finger twist', a: 'Manual focus, transient scale' },
+  { g: 'Tap mode letter', a: 'Toggle S ↔ A, instant' },
+  { g: 'Tap 4:3', a: 'Toggle the rule-of-thirds grid' },
+  { g: 'Tap look name', a: 'Open the look filmstrip' },
+  { g: 'Tap DNG / JPEG', a: 'Toggle format (rear only)' },
+  { g: 'Tap flip', a: 'Switch rear ↔ selfie' },
+  { g: 'Double-tap dial', a: 'Reset to 1/250 / ƒ4' },
+  { g: 'Action Button', a: 'Cycle look when in foreground' },
+];
+
+const specs = [
+  { k: 'Modes', v: 'S · A' },
+  { k: 'Archive', v: 'ProRAW DNG or JPEG' },
+  { k: 'Looks', v: 'Mono · Faded · Neutral' },
+  { k: 'Privacy', v: 'No network. No account. No analytics.' },
+  { k: 'Device', v: 'iPhone 14 Pro Max & later' },
+  { k: 'Lenses', v: '0.5× · Macro · 1× · 2× · 5×' },
+  { k: 'Cameras', v: 'Rear ProRAW · front JPEG' },
+  { k: 'Subject', v: 'Stills. Video is not this.' },
+];
+---
+
+<Layout>
+  <div id="top" style="background:#000;color:#F3EEE3;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;overflow-x:hidden;">
+
+    <!-- ============ NAV ============ -->
+    <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(0,0,0,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(243,238,227,.07);">
+      <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:9px;">
+        <span style="width:11px;height:11px;border-radius:50%;background:#C9A35B;display:inline-block;"></span>
+        <span style="font-size:19px;font-weight:600;letter-spacing:-.5px;color:#F3EEE3;">basic</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13px;font-weight:500;letter-spacing:.2px;">
+        <a href="#ruler" style="color:rgba(243,238,227,.62);text-decoration:none;">The ruler</a>
+        <a href="#looks" style="color:rgba(243,238,227,.62);text-decoration:none;">Looks</a>
+        <a href="#lenses" style="color:rgba(243,238,227,.62);text-decoration:none;">Lenses</a>
+        <a href="#specs" style="color:rgba(243,238,227,.62);text-decoration:none;">Specs</a>
+        <a href="#get" style="color:#0a0a0b;background:#C9A35B;padding:9px 17px;border-radius:9px;text-decoration:none;font-weight:600;">Coming Soon</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header style="min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding:150px 64px 80px;max-width:1280px;margin:0 auto;">
+      <div>
+        <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:26px;">A colour priority-mode camera for iPhone</div>
+        <h1 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:78px;line-height:1.02;letter-spacing:-1.5px;margin:0 0 28px;color:#F3EEE3;text-wrap:balance;">Shoot the street,<br /><span style="font-style:italic;color:#C9A35B;">not the menus.</span></h1>
+        <p style="font-size:19px;line-height:1.65;color:rgba(243,238,227,.66);max-width:480px;margin:0 0 36px;">The camera is the simplest instrument a photographer carries, and the most honest. basic gives you <span style="color:#F3EEE3;">shutter priority and aperture priority</span>, one ruler, one cream shutter, nothing between you and the frame. Shoot ProRAW DNG or JPEG.</p>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px;">
+          <a href="#get" style="background:#C9A35B;color:#0a0a0b;font-weight:600;font-size:15px;padding:15px 26px;border-radius:11px;text-decoration:none;">Coming Soon on the App Store</a>
+          <a href="#ruler" style="color:#F3EEE3;font-weight:500;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(201,163,91,.5);padding-bottom:3px;">See how it feels →</a>
+        </div>
+        <div class="mono" style="font-size:12px;letter-spacing:1px;color:rgba(243,238,227,.4);">Apple ProRAW DNG or JPEG · In colour · iPhone 14 Pro Max and later</div>
+      </div>
+      <div style="display:flex;justify-content:center;">
+        <div style="transform:rotate(2deg);">
+          <CaptureMock slotId="hero-shot" photo="/images/hero-car.jpg" pos="center 78%" placeholder="DROP A STREET FRAME" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" look="Neutral" />
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="reveal" style="padding:120px 64px;max-width:1000px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:300;font-size:46px;line-height:1.25;letter-spacing:-.5px;margin:0;color:#F3EEE3;text-wrap:balance;">One frame. One ruler. One shutter.<br />The rest gets out of the way.</h2>
+      <p style="font-size:18px;line-height:1.75;color:rgba(243,238,227,.6);max-width:680px;margin:34px auto 0;">The camera that demands nothing of you will give nothing back. The one that forces you to choose your shutter speed, to commit to a priority, to see before you press, that one teaches you to see. basic is that camera. Two modes. One screen. The whole app.</p>
+    </section>
+
+    <!-- ============ THE RULER ============ -->
+    <section id="ruler" class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div>
+        <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:22px;">The exposure ruler</div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.08;letter-spacing:-1px;margin:0 0 26px;color:#F3EEE3;">Your thumb is the dial.</h2>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">Drag anywhere along the ruler and the stops glide under a fixed brass needle. In <span style="color:#C9A35B;font-weight:600;">S</span> it drives shutter speed, from Bulb to <span style="color:#F3EEE3;">1/2000</span>. In <span style="color:#C9A35B;font-weight:600;">A</span>, aperture intent from ƒ1.4 to ƒ16.</p>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">The reading turns brass while you move. It turns <span style="color:#D9913C;">amber</span> the moment the light runs out and ISO hits its ceiling, no silent correction, no invisible fix. You know when you are at the edge.</p>
+        <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:19px;line-height:1.6;color:rgba(243,238,227,.8);margin:0 0 24px;border-left:2px solid #C9A35B;padding-left:20px;">The great photographers worked by feel. Winogrand on a New York sidewalk never looked down at a meter. He had calibrated his hands. basic gives your hands the same calibration on glass.</p>
+        <div class="mono" style="font-size:12px;letter-spacing:.5px;color:rgba(243,238,227,.42);line-height:1.9;">120fps tracking · haptic tick at every stop<br />hard end-stop at 1/2000 · tap the mode letter to toggle S ↔ A</div>
+      </div>
+
+      <!-- interactive ruler demo -->
+      <div style="background:#0a0a0b;border:1px solid rgba(243,238,227,.08);border-radius:24px;padding:44px 30px;display:flex;flex-direction:column;align-items:center;">
+        <div style="display:flex;gap:8px;margin-bottom:28px;">
+          <button id="s-btn" style="width:46px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:18px;font-weight:700;cursor:pointer;transition:all .15s;background:rgba(201,163,91,.16);border:1.5px solid #C9A35B;color:#C9A35B;">S</button>
+          <button id="a-btn" style="width:46px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:18px;font-weight:700;cursor:pointer;transition:all .15s;background:rgba(243,238,227,.05);border:1.5px solid transparent;color:rgba(243,238,227,.6);">A</button>
+        </div>
+        <div id="big-val" class="mono" style="font-size:46px;font-weight:600;letter-spacing:1px;color:#F3EEE3;margin-bottom:6px;">1/250</div>
+        <div id="ev-val" class="mono" style="font-size:12px;font-weight:600;letter-spacing:1px;color:#C9A35B;height:16px;opacity:0;transition:opacity .2s;">0.0 EV</div>
+
+        <div id="dial-track" style="position:relative;width:100%;height:64px;margin-top:18px;overflow:hidden;touch-action:none;cursor:ew-resize;">
+          <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);">
+            <div id="ruler-track" style="position:absolute;left:50%;top:50%;width:4000px;margin-left:-2000px;height:40px;transform:translateY(-50%) translateX(-350px);will-change:transform;transition:transform .12s cubic-bezier(.2,.7,.2,1);">
+              <div style="position:absolute;inset:0;background-repeat:repeat-x;background-position:2000px center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 1px,transparent 1px 12.5px);"></div>
+              <div style="position:absolute;inset:0;background-repeat:repeat-x;background-position:2000px center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.42) 0 1.5px,transparent 1.5px 25px);"></div>
+            </div>
+          </div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:2px;height:40px;background:#C9A35B;box-shadow:0 0 9px rgba(201,163,91,.7);border-radius:1px;"></div>
+          <div style="position:absolute;left:50%;top:4px;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #C9A35B;"></div>
+        </div>
+        <div class="mono" style="display:flex;justify-content:space-between;width:100%;font-size:11px;letter-spacing:1px;color:rgba(243,238,227,.34);margin-top:6px;">
+          <span id="lo-label">Bulb</span>
+          <span style="color:rgba(243,238,227,.5);">,  drag , </span>
+          <span id="hi-label">1/2000</span>
+        </div>
+        <div style="margin-top:20px;font-size:12px;color:rgba(243,238,227,.4);font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;letter-spacing:.5px;">drag the ruler · double-tap to reset</div>
+      </div>
+    </section>
+
+    <!-- ============ TWO MODES ============ -->
+    <section class="reveal" style="padding:60px 64px 110px;max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="background:linear-gradient(160deg,#141410,#0a0a0b);border:1px solid rgba(201,163,91,.18);border-radius:20px;padding:38px;">
+          <div class="mono" style="font-size:40px;font-weight:700;color:#C9A35B;margin-bottom:14px;">S</div>
+          <div style="font-size:21px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Shutter priority</div>
+          <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Set the ceiling; the sensor finds the light. Native to iPhone, and honest. From Bulb to 1/2000.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#141410,#0a0a0b);border:1px solid rgba(201,163,91,.18);border-radius:20px;padding:38px;">
+          <div class="mono" style="font-size:40px;font-weight:700;color:#C9A35B;margin-bottom:14px;">A</div>
+          <div style="font-size:21px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Aperture priority</div>
+          <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Exposure intent, you set the depth of field in mind, the system finds the exposure. ƒ1.4 to ƒ16.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ESSAYS ============ -->
+    <section class="reveal" style="padding:90px 64px;border-top:1px solid rgba(243,238,227,.07);border-bottom:1px solid rgba(243,238,227,.07);background:#060606;">
+      <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;">
+        <div>
+          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On seeing</div>
+          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">The photograph is not made at the moment of pressing the shutter. It is made in the fractions of a second before, when the eye and the hand and the light align. basic removes every obstacle between that alignment and the frame.</p>
+        </div>
+        <div>
+          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On priority modes</div>
+          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">Shutter-priority is native to iPhone and honest. You set the ceiling; the sensor finds the light. Aperture-priority is exposure intent, you set the depth of field in mind, the system finds the exposure. Two decisions. Both yours.</p>
+        </div>
+        <div>
+          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On the file</div>
+          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">In DNG, every frame saves Apple ProRAW, untouched by any look the app makes, exactly what the sensor saw. In JPEG, what you composed is what lands in your library, look baked in. Your choice, on the frame.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOOKS ============ -->
+    <section id="looks" class="reveal" style="padding:120px 64px;max-width:1280px;margin:0 auto;">
+      <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Looks render live</div>
+      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">Compose in the look.</h2>
+      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:660px;margin:0 0 56px;">basic is a colour camera. The viewfinder shows true colour by default, Neutral. Mono is a choice, not the identity. The look renders live; in DNG the ProRAW file saves exactly as the sensor produced it, in JPEG the look is baked in. Swipe down on the frame to cycle looks; the Action Button toggles without moving the phone.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px;align-items:start;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <CaptureMock slotId="look-shot-neutral" photo="/images/look-boat.jpg" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" />
+          <div style="text-align:center;margin-top:26px;max-width:300px;">
+            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Neutral <span style="font-size:12px;font-weight:600;color:#C9A35B;letter-spacing:1px;">· DEFAULT</span></div>
+            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">Display P3, colour-managed, no curve, true colour, exactly as the sensor saw it. basic is a colour camera first; this is it out of the box.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <CaptureMock slotId="look-shot-faded" photo="/images/look-boat.jpg" look="Faded" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" />
+          <div style="text-align:center;margin-top:26px;max-width:300px;">
+            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Faded</div>
+            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">Muted colour, warm shadows, restrained saturation. A quiet, filmic frame. The look of a photograph that has been somewhere and come back.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <CaptureMock slotId="look-shot-mono" photo="/images/look-boat.jpg" look="Mono" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" />
+          <div style="text-align:center;margin-top:26px;max-width:300px;">
+            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Mono <span style="font-size:12px;font-weight:600;color:rgba(243,238,227,.4);letter-spacing:1px;">· OPTIONAL</span></div>
+            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">High-acuity black and white when you want it. Deep blacks, gentle highlight roll-off. A choice you reach for, never the whole product.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:50px;background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:16px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;max-width:760px;">
+        <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;flex:none;margin-top:2px;">NOTE</div>
+        <p style="font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);margin:0;">Looks apply to the live viewfinder always. In DNG mode the ProRAW file written to your library is never modified by any look, at any time, in any mode. In JPEG mode the look you see is baked into the saved file.</p>
+      </div>
+    </section>
+
+    <!-- ============ LENSES ============ -->
+    <section id="lenses" class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;border-top:1px solid rgba(243,238,227,.07);">
+      <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">The honest lens map</div>
+      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">No invented numbers.</h2>
+      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:660px;margin:0 0 50px;">Built for the iPhone Pro camera system, 14 Pro Max and later. Every focal length is the real 35mm equivalent: 2× is labelled exactly what it is, Macro is a lens you choose, not a silent switch. Swipe left or right on the frame to move between lenses; the focal length flashes, then disappears.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+        {lensCards.map(L => (
+          <div style="background:linear-gradient(160deg,#121210,#0a0a0b);border:1px solid rgba(243,238,227,.08);border-radius:18px;padding:28px 22px;">
+            <div class="mono" style="font-size:30px;font-weight:700;color:#C9A35B;margin-bottom:14px;">{L.pill}</div>
+            <div style="font-size:22px;font-weight:600;color:#F3EEE3;margin-bottom:4px;">{L.mm}</div>
+            <div style="font-size:13px;color:rgba(243,238,227,.5);line-height:1.5;">{L.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:34px;background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:14px;padding:20px 24px;max-width:780px;font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);">On iPhone 14 Pro Max the telephoto reaches 3× (77mm); 15 Pro Max and later add the 5× (120mm) tetraprism. basic discovers whatever glass your device ships, and never prints a number it cannot deliver.</div>
+      <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:18px;color:rgba(243,238,227,.62);margin:34px 0 0;max-width:620px;">Robert Frank walked with a 50mm and the world was enough. The glass matters only when the photographer does not.</p>
+    </section>
+
+    <!-- ============ APERTURE-PRIORITY HONESTY ============ -->
+    <section class="reveal" style="padding:110px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);border-bottom:1px solid rgba(243,238,227,.07);">
+      <div style="max-width:1100px;margin:0 auto;">
+        <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Aperture-priority, honestly</div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:46px;line-height:1.1;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">iPhone has a fixed aperture. We say so.</h2>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:680px;margin:0 0 14px;">In A-mode, the dial sets exposure intent via bias, the system finds the shutter speed and ISO to hold your target. Optional simulated depth of field renders in the live viewfinder only. The DNG is never blurred. The physical aperture is always printed in the readout, not a fiction.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:680px;margin:0 0 44px;">No surprises, and nothing hidden behind a settings screen, because there isn't one. The camera that earns your trust does not hide what it cannot do.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(243,238,227,.08);border:1px solid rgba(243,238,227,.08);border-radius:14px;overflow:hidden;">
+          {aperRows.map(R => (
+            <div style="background:#0a0a0b;padding:24px 18px;">
+              <div class="mono" style="font-size:11px;letter-spacing:1px;color:rgba(243,238,227,.42);text-transform:uppercase;margin-bottom:12px;line-height:1.4;">{R.k}</div>
+              <div style="font-size:15px;font-weight:600;color:#F3EEE3;line-height:1.45;">{R.v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELFIE ============ -->
+    <section class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;">
+      <div style="display:flex;justify-content:center;">
+        <div style="transform:rotate(-2deg);">
+          <CaptureMock slotId="selfie-shot" photo="/images/selfie.jpg" pos="46% 34%" selfie={true} mode="A" shutter="1/120" ap="ƒ2.2" iso="320" bigValue="ƒ2.8" look="Neutral" format="JPEG" />
+        </div>
+      </div>
+      <div>
+        <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Rear and front</div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">Flip it around.</h2>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:520px;margin:0 0 20px;">The flip control sits bottom-left of the frame, exactly where your thumb expects it. The same S/A dial, the same looks, the same cream shutter, pointed the other way.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:520px;margin:0 0 28px;">The front camera shoots <span style="color:#F3EEE3;">JPEG only</span>, Apple's front sensor doesn't offer ProRAW, and basic won't fake a DNG it can't produce. Flip back and your rear lens and format are restored exactly as you left them.</p>
+        <div class="mono" style="display:flex;gap:30px;font-size:12px;letter-spacing:.5px;color:rgba(243,238,227,.42);">
+          <div><span style="color:#C9A35B;">FORMAT</span><br /><span style="color:#F3EEE3;font-size:14px;">JPEG, locked</span></div>
+          <div><span style="color:#C9A35B;">CONTROL</span><br /><span style="color:#F3EEE3;font-size:14px;">Bottom-left flip</span></div>
+          <div><span style="color:#C9A35B;">LOOKS</span><br /><span style="color:#F3EEE3;font-size:14px;">All three</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHUTTER ============ -->
+    <section class="reveal" style="padding:120px 64px;border-top:1px solid rgba(243,238,227,.07);">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <div style="display:flex;justify-content:center;margin-bottom:44px;">
+          <div style="width:150px;height:96px;border-radius:22px;background:#F3EEE3;border:3px solid #C9A35B;box-shadow:0 0 0 6px #000,0 0 60px rgba(201,163,91,.3);display:flex;align-items:center;justify-content:center;">
+            <div style="width:120px;height:66px;border-radius:15px;border:1px solid rgba(0,0,0,.12);"></div>
+          </div>
+        </div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:50px;line-height:1.08;letter-spacing:-1px;margin:0 0 22px;color:#F3EEE3;text-wrap:balance;">The only button that matters.</h2>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:600px;margin:0 auto 14px;">Dead-center. Always live. Impossible to miss. The cream shutter is the heart of basic: one warm rectangle on pure black, ringed in brass. Never covered by UI. Never blocked by processing. Press it. The frame fires.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:600px;margin:0 auto 56px;">The volume buttons and Camera Control are also the shutter. The whole phone is a shutter.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+          {stats.map(S => (
+            <div style="background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:18px;padding:32px 20px;">
+              <div style="font-size:13px;color:rgba(243,238,227,.5);margin-bottom:12px;">{S.label}</div>
+              <div class="mono" style="font-size:34px;font-weight:700;color:#C9A35B;">{S.val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE APP ============ -->
+    <section class="reveal" style="padding:110px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);">
+      <div style="max-width:1280px;margin:0 auto;">
+        <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">The app</div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 56px;color:#F3EEE3;">One screen. The whole app.</h2>
+        <div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;">
+          <div style="transform:rotate(-3deg);"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
+          <div style="transform:translateY(-18px);"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="DNG" /></div>
+          <div style="transform:rotate(3deg);"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="JPEG" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GESTURES ============ -->
+    <section class="reveal" style="padding:120px 64px;max-width:1100px;margin:0 auto;">
+      <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Everything is on the frame</div>
+      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">No menus. Just the frame.</h2>
+      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:620px;margin:0 0 50px;">There is no settings screen. There is no gear, no swipe-up sheet, no onboarding. Every control lives on the capture screen or a direct gesture. The frame is never interrupted.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 56px;">
+        {gestures.map(G => (
+          <div style="display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid rgba(243,238,227,.08);">
+            <div style="font-size:15px;font-weight:600;color:#F3EEE3;flex:none;">{G.g}</div>
+            <div style="font-size:14px;color:rgba(243,238,227,.56);text-align:right;">{G.a}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ SPECS ============ -->
+    <section id="specs" class="reveal" style="padding:100px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);">
+      <div style="max-width:1100px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(243,238,227,.08);border:1px solid rgba(243,238,227,.08);border-radius:16px;overflow:hidden;">
+          {specs.map(P => (
+            <div style="background:#0a0a0b;padding:30px 24px;">
+              <div class="mono" style="font-size:11px;letter-spacing:1.5px;color:#C9A35B;text-transform:uppercase;margin-bottom:12px;">{P.k}</div>
+              <div style="font-size:16px;font-weight:600;color:#F3EEE3;line-height:1.45;">{P.v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section id="get" class="reveal" style="padding:130px 64px;text-align:center;">
+      <div style="max-width:720px;margin:0 auto;">
+        <div style="width:92px;height:92px;border-radius:21px;margin:0 auto 34px;overflow:hidden;border:1px solid rgba(243,238,227,.12);background:#000; display:flex; align-items:center; justify-content:center;">
+          <!-- Camera icon app logo -->
+          <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:100%;">
+            <rect width="92" height="92" rx="21" fill="#0d0d0e" />
+            <circle cx="46" cy="46" r="30" stroke="#C9A35B" stroke-width="2"/>
+            <circle cx="46" cy="46" r="19" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <circle cx="46" cy="46" r="10" fill="#F6F1E6"/>
+            <rect x="44" y="6" width="4" height="8" rx="2" fill="#C9A35B"/>
+          </svg>
+        </div>
+        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:62px;line-height:1.04;letter-spacing:-1.5px;margin:0 0 24px;color:#F3EEE3;">Go shoot.</h2>
+        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.64);max-width:520px;margin:0 auto 16px;">basic is a one-time purchase. No subscription, no account, no cloud, no analytics. Your photographs never leave the phone unless you put them there.</p>
+        <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:19px;color:rgba(243,238,227,.78);margin:0 0 40px;">The camera that earns your trust and asks nothing in return.</p>
+        <a href="#get" style="display:inline-block;background:#C9A35B;color:#0a0a0b;font-weight:600;font-size:16px;padding:17px 32px;border-radius:12px;text-decoration:none;">Coming Soon on the App Store</a>
+        <div class="mono" style="font-size:13px;letter-spacing:1px;color:rgba(243,238,227,.42);margin-top:18px;">$4.99 · one time</div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer style="padding:60px 64px;border-top:1px solid rgba(243,238,227,.08);">
+      <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#C9A35B;"></span>
+            <span style="font-size:18px;font-weight:600;letter-spacing:-.5px;">basic</span>
+          </div>
+          <div style="font-size:14px;color:rgba(243,238,227,.5);line-height:1.6;">a priority-mode camera for iPhone<br />a <a href="https://raastey.co" style="color:#C9A35B;text-decoration:none;">raastey.co</a> venture</div>
+        </div>
+        <div style="display:flex;gap:60px;font-size:14px;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <span class="mono" style="color:rgba(243,238,227,.4);font-size:11px;letter-spacing:1.5px;">APP</span>
+            <a href="#ruler" style="color:rgba(243,238,227,.62);text-decoration:none;">The ruler</a>
+            <a href="#looks" style="color:rgba(243,238,227,.62);text-decoration:none;">Looks</a>
+            <a href="#lenses" style="color:rgba(243,238,227,.62);text-decoration:none;">Lenses</a>
+            <a href="#specs" style="color:rgba(243,238,227,.62);text-decoration:none;">Specs</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <span class="mono" style="color:rgba(243,238,227,.4);font-size:11px;letter-spacing:1.5px;">CONTACT</span>
+            <a href="mailto:hello@thebasic.camera" style="color:rgba(243,238,227,.62);text-decoration:none;">hello@thebasic.camera</a>
+          </div>
+        </div>
+      </div>
+      <div class="mono" style="max-width:1280px;margin:40px auto 0;font-size:12px;color:rgba(243,238,227,.32);letter-spacing:.5px;">© 2026 thebasic.camera</div>
+    </footer>
+
+  </div>
+</Layout>
+
+<script>
+  // Client-side interactive dial logic
+  const shutter = ['Bulb','30"','15"','8"','4"','2"','1"','1/2','1/4','1/8','1/15','1/30','1/60','1/125','1/250','1/500','1/1000','1/2000'];
+  const aperture = ['ƒ1.4','ƒ2','ƒ2.8','ƒ4','ƒ5.6','ƒ8','ƒ11','ƒ16'];
+  const STEP = 25;
+
+  let mode = 'S';
+  let shutterIdx = 14;
+  let apertureIdx = 3;
+  let dialing = false;
+  let timerId = null;
+
+  const sBtn = document.getElementById('s-btn');
+  const aBtn = document.getElementById('a-btn');
+  const bigVal = document.getElementById('big-val');
+  const evVal = document.getElementById('ev-val');
+  const rulerTrack = document.getElementById('ruler-track');
+  const loLabel = document.getElementById('lo-label');
+  const hiLabel = document.getElementById('hi-label');
+  const dialTrack = document.getElementById('dial-track');
+
+  function curIdx() {
+    return mode === 'S' ? shutterIdx : apertureIdx;
+  }
+
+  function modeBtnStyle(btn, active) {
+    if (active) {
+      btn.style.background = 'rgba(201,163,91,.16)';
+      btn.style.border = '1.5px solid #C9A35B';
+      btn.style.color = '#C9A35B';
+    } else {
+      btn.style.background = 'rgba(243,238,227,.05)';
+      btn.style.border = '1.5px solid transparent';
+      btn.style.color = 'rgba(243,238,227,.6)';
+    }
+  }
+
+  function apply() {
+    if (rulerTrack) {
+      rulerTrack.style.transform = `translateY(-50%) translateX(${-curIdx() * STEP}px)`;
+    }
+    if (bigVal) {
+      const val = mode === 'S' ? shutter[shutterIdx] : aperture[apertureIdx];
+      bigVal.textContent = val;
+      const maxed = mode === 'S' && shutterIdx >= 17;
+      bigVal.style.color = maxed ? '#D9913C' : '#F3EEE3';
+    }
+    if (evVal) {
+      evVal.style.opacity = dialing ? '1' : '0';
+    }
+    if (loLabel) {
+      loLabel.textContent = mode === 'S' ? 'Bulb' : 'ƒ1.4';
+    }
+    if (hiLabel) {
+      hiLabel.textContent = mode === 'S' ? '1/2000' : 'ƒ16';
+    }
+  }
+
+  function updateEV() {
+    if (evVal) {
+      const idx = curIdx();
+      const refIdx = mode === 'S' ? 13 : 3;
+      const off = refIdx - idx;
+      const bias = off * 0.3;
+      evVal.textContent = `${bias > 0 ? '+' : ''}${bias.toFixed(1)} EV`;
+    }
+  }
+
+  sBtn?.addEventListener('click', () => {
+    mode = 'S';
+    modeBtnStyle(sBtn, true);
+    modeBtnStyle(aBtn, false);
+    apply();
+  });
+
+  aBtn?.addEventListener('click', () => {
+    mode = 'A';
+    modeBtnStyle(sBtn, false);
+    modeBtnStyle(aBtn, true);
+    apply();
+  });
+
+  // Drag interaction
+  dialTrack?.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    dialing = true;
+    if (timerId) clearTimeout(timerId);
+
+    const startX = e.clientX;
+    const startIdx = curIdx();
+    const maxIdx = (mode === 'S' ? shutter.length : aperture.length) - 1;
+
+    apply();
+    updateEV();
+
+    function move(ev) {
+      const delta = Math.round(-(ev.clientX - startX) / STEP);
+      const nextIdx = Math.max(0, Math.min(maxIdx, startIdx + delta));
+      if (nextIdx !== curIdx()) {
+        if (mode === 'S') {
+          shutterIdx = nextIdx;
+        } else {
+          apertureIdx = nextIdx;
+        }
+        apply();
+        updateEV();
+      }
+    }
+
+    function up() {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      timerId = setTimeout(() => {
+        dialing = false;
+        apply();
+      }, 1100);
+    }
+
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  });
+
+  dialTrack?.addEventListener('dblclick', (e) => {
+    e.preventDefault();
+    dialing = true;
+    if (timerId) clearTimeout(timerId);
+
+    if (mode === 'S') {
+      shutterIdx = 14;
+    } else {
+      apertureIdx = 3;
+    }
+
+    apply();
+    updateEV();
+
+    timerId = setTimeout(() => {
+      dialing = false;
+      apply();
+    }, 900);
+  });
+
+  // Initial apply
+  apply();
+</script>

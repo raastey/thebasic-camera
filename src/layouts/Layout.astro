@@ -1,0 +1,63 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'basic — a priority-mode camera for iPhone',
+  description = 'Shutter priority. Aperture priority. One ruler, one shutter. basic puts the frame first and gets out of the way.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/images/hero-car.jpg" />
+  <meta property="og:url" content="https://thebasic.camera" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style is:global>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #000; color: #F3EEE3; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; margin: 0; }
+    ::selection { background: #C9A35B; color: #0a0a0b; }
+    
+    .mono { font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace; }
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <slot />
+  
+  <script>
+    // Reveal animation observer
+    document.addEventListener('DOMContentLoaded', () => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+          }
+        });
+      }, { threshold: 0.12 });
+      
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    });
+  </script>
+</body>
+</html>

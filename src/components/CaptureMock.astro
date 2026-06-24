@@ -1,0 +1,162 @@
+---
+interface Props {
+  slotId?: string;
+  photo?: string;
+  pos?: string;
+  size?: string;
+  placeholder?: string;
+  mode?: string;
+  shutter?: string;
+  ap?: string;
+  iso?: string;
+  bigValue?: string;
+  lens?: string;
+  look?: 'Neutral' | 'Mono' | 'Faded';
+  format?: 'DNG' | 'JPEG';
+  selfie?: boolean;
+  isoMaxed?: boolean;
+  class?: string;
+}
+
+const {
+  slotId = 'cap-photo',
+  photo = '',
+  pos = 'center',
+  size = 'cover',
+  placeholder = 'DROP A FRAME',
+  mode = 'S',
+  shutter = '1/500',
+  ap = 'ƒ1.8',
+  iso = '200',
+  bigValue,
+  lens = '1×',
+  look = 'Neutral',
+  format = 'DNG',
+  selfie = false,
+  isoMaxed = false,
+  class: className = '',
+} = Astro.props;
+
+const actualFormat = selfie ? 'JPEG' : format;
+const isDNG = actualFormat === 'DNG';
+const lensDefault = lens === '1×';
+
+// Compute the filter style for the active look
+let lookFilter = 'saturate(1.05)';
+if (look === 'Mono') {
+  lookFilter = 'grayscale(1) contrast(1.12) brightness(1.02)';
+} else if (look === 'Faded') {
+  lookFilter = 'sepia(.20) saturate(.72) contrast(.92) brightness(1.05)';
+}
+
+const photoStyle = photo 
+  ? `width:100%;height:100%;background:#0d0d0e url('${photo}') ${pos}/${size} no-repeat; filter: ${lookFilter};`
+  : '';
+
+const thumbStyle = photo 
+  ? `background:url('${photo}') ${pos}/cover no-repeat;`
+  : 'background:#161618;';
+
+const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
+---
+
+<div class={`capture-mock ${className}`} style="width:300px;height:664px;background:#000;border-radius:42px;position:relative;overflow:hidden;box-shadow:0 0 0 8px #1b1b1d,0 0 0 9px #050506;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif; user-select:none;">
+
+  <!-- status bar -->
+  <div style="height:32px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px 0 26px;color:#fff;">
+    <div class="mono" style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;">9:41</div>
+    <div style="display:flex;align-items:center;gap:5px;opacity:.92;">
+      <svg width="15" height="9" viewBox="0 0 18 11" fill="#fff">
+        <rect x="0" y="7" width="3" height="4" rx="1"/>
+        <rect x="5" y="4.5" width="3" height="6.5" rx="1"/>
+        <rect x="10" y="2" width="3" height="9" rx="1"/>
+        <rect x="15" y="0" width="3" height="11" rx="1"/>
+      </svg>
+      <div style="width:19px;height:10px;border:1.2px solid rgba(255,255,255,.5);border-radius:3px;position:relative;">
+        <div style="position:absolute;left:1.2px;top:1.2px;bottom:1.2px;width:13px;background:#fff;border-radius:1.4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- viewfinder 4:3 (300x400) -->
+  <div style="width:300px;height:400px;flex:none;position:relative;background:#0d0d0e;overflow:hidden;">
+    <div style="position:absolute;inset:0;">
+      {photo ? (
+        <div style={photoStyle}></div>
+      ) : (
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:1px;font-family:'SF Mono',monospace;">
+          {placeholder}
+        </div>
+      )}
+    </div>
+
+    <!-- rec dot -->
+    <div style="position:absolute;top:11px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:#34C759;box-shadow:0 0 7px rgba(52,199,89,.7);"></div>
+
+    <!-- mode letter -->
+    <div style="position:absolute;top:11px;left:13px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.4px solid #C9A35B;border-radius:7px;color:#C9A35B;font-size:15px;font-weight:700;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;background:rgba(0,0,0,.28);backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);">
+      {mode}
+    </div>
+
+    <!-- readout -->
+    <div class="mono" style="position:absolute;top:11px;right:13px;text-align:right;text-shadow:0 1px 4px rgba(0,0,0,.7);">
+      <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.2px;">{shutter} <span style="color:rgba(255,255,255,.55);">·</span> {ap}</div>
+      <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>ISO {iso}</div>
+    </div>
+
+    <!-- look chevron -->
+    <div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);opacity:.45;">
+      <svg width="18" height="7" viewBox="0 0 22 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 2l9 5 9-5"/></svg>
+    </div>
+
+    <!-- camera flip bottom-left -->
+    <div style="position:absolute;left:12px;bottom:12px;width:36px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(20,20,22,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:9px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"><path d="M3 8a9 9 0 0 1 15-3l2 2"/><path d="M21 16a9 9 0 0 1-15 3l-2-2"/><polyline points="20 3 20 7 16 7"/><polyline points="4 21 4 17 8 17"/></svg>
+    </div>
+
+    <!-- lens pill / selfie indicator bottom-right -->
+    {!selfie ? (
+      <div style={`position:absolute;right:12px;bottom:12px;min-width:38px;height:32px;padding:0 11px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;font-size:12px;font-weight:700;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace; ${lensDefault ? 'background:rgba(20,20,22,.5);color:rgba(255,255,255,.92);' : 'background:rgba(201,163,91,.18);border:1px solid #C9A35B;color:#C9A35B;'}`}>{lens}</div>
+    ) : (
+      <div style="position:absolute;right:12px;bottom:12px;height:32px;padding:0 12px;display:flex;align-items:center;justify-content:center;background:rgba(201,163,91,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #C9A35B;border-radius:16px;color:#C9A35B;font-size:11px;font-weight:700;letter-spacing:1px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;">SELF</div>
+    )}
+  </div>
+
+  <!-- chrome -->
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:#000;padding-bottom:6px;">
+
+    <!-- big value -->
+    <div class="mono" style={`height:46px;flex:none;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:600;letter-spacing:.5px; color:${(mode === 'S' && (shutter === '1/2000' || shutter === '1/4000')) ? '#D9913C' : 'rgba(255,255,255,.92)'}`}>{finalBigValue}</div>
+
+    <!-- ruler -->
+    <div style="position:relative;height:38px;flex:none;overflow:hidden;">
+      <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);">
+        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 1px,transparent 1px 11px);"></div>
+        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.42) 0 1.5px,transparent 1.5px 44px);"></div>
+      </div>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:2px;height:26px;background:#C9A35B;box-shadow:0 0 7px rgba(201,163,91,.6);border-radius:1px;"></div>
+      <div style="position:absolute;left:50%;top:5px;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #C9A35B;"></div>
+    </div>
+
+    <!-- status strip -->
+    <div class="mono" style="height:24px;flex:none;display:flex;align-items:center;justify-content:center;gap:20px;font-size:11px;font-weight:600;letter-spacing:.8px;color:rgba(255,255,255,.42);">
+      <svg width="9" height="12" viewBox="0 0 11 14" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M6 1 1.5 8H5l-1 5 5.5-7.5H6L6 1Z"/>
+        <line x1="1" y1="13" x2="10" y2="1" stroke-width="1.1"/>
+      </svg>
+      <div>4:3</div>
+      <div style="color:rgba(255,255,255,.78);letter-spacing:1.2px;">{look.toUpperCase()}</div>
+    </div>
+
+    <!-- bottom bar -->
+    <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;">
+      <div style={`width:42px;height:42px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.14);flex:none; ${thumbStyle}`}></div>
+      <div style="width:76px;height:48px;border-radius:13px;background:#F3EEE3;border:2px solid #C9A35B;box-shadow:0 0 0 3px #000,0 0 18px rgba(201,163,91,.22);display:flex;align-items:center;justify-content:center;">
+        <div style="width:60px;height:33px;border-radius:9px;border:1px solid rgba(0,0,0,.12);"></div>
+      </div>
+      <div class="mono" style={`width:42px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:${isDNG ? '#C9A35B' : 'rgba(255,255,255,.6)'};`}>
+        {actualFormat}
+      </div>
+    </div>
+  </div>
+</div>
