@@ -55,50 +55,50 @@ const specs = [
   <div id="top" style="background:#000;color:#F3EEE3;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;overflow-x:hidden;">
 
     <!-- ============ NAV ============ -->
-    <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(0,0,0,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(243,238,227,.07);">
-      <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
-        <img src="/icon-60.png" style="width:20px;height:20px;border-radius:4.5px;object-fit:cover;" alt="basic logo" />
+    <nav class="navbar">
+      <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:9px;">
+        <img src="/icon-120.png" style="width:24px;height:24px;border-radius:5px;object-fit:cover;" alt="basic logo" />
         <span style="font-size:19px;font-weight:600;letter-spacing:-.5px;color:#F3EEE3;">basic</span>
       </a>
-      <div style="display:flex;align-items:center;gap:30px;font-size:13px;font-weight:500;letter-spacing:.2px;">
-        <a href="#ruler" style="color:rgba(243,238,227,.62);text-decoration:none;">The ruler</a>
-        <a href="#looks" style="color:rgba(243,238,227,.62);text-decoration:none;">Looks</a>
-        <a href="#lenses" style="color:rgba(243,238,227,.62);text-decoration:none;">Lenses</a>
-        <a href="#specs" style="color:rgba(243,238,227,.62);text-decoration:none;">Specs</a>
-        <a href="#get" style="color:#0a0a0b;background:#C9A35B;padding:9px 17px;border-radius:9px;text-decoration:none;font-weight:600;">Coming Soon</a>
+      <div class="nav-menu">
+        <a href="#ruler" class="nav-link">The ruler</a>
+        <a href="#looks" class="nav-link">Looks</a>
+        <a href="#lenses" class="nav-link">Lenses</a>
+        <a href="#specs" class="nav-link">Specs</a>
+        <a href="#get" class="nav-btn">Coming Soon</a>
       </div>
     </nav>
 
     <!-- ============ HERO ============ -->
-    <header style="min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding:150px 64px 80px;max-width:1280px;margin:0 auto;">
-      <div>
+    <header class="hero-section">
+      <div class="hero-content">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:26px;">A colour priority-mode camera for iPhone</div>
-        <h1 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:78px;line-height:1.02;letter-spacing:-1.5px;margin:0 0 28px;color:#F3EEE3;text-wrap:balance;">Shoot the street,<br /><span style="font-style:italic;color:#C9A35B;">not the menus.</span></h1>
-        <p style="font-size:19px;line-height:1.65;color:rgba(243,238,227,.66);max-width:480px;margin:0 0 36px;">The camera is the simplest instrument a photographer carries, and the most honest. basic gives you <span style="color:#F3EEE3;">shutter priority and aperture priority</span>, one ruler, one cream shutter, nothing between you and the frame. Shoot ProRAW DNG or JPEG.</p>
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px;">
-          <a href="#get" style="background:#C9A35B;color:#0a0a0b;font-weight:600;font-size:15px;padding:15px 26px;border-radius:11px;text-decoration:none;">Coming Soon on the App Store</a>
-          <a href="#ruler" style="color:#F3EEE3;font-weight:500;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(201,163,91,.5);padding-bottom:3px;">See how it feels →</a>
+        <h1 class="hero-title">Shoot the street,<br /><span style="font-style:italic;color:#C9A35B;">not the menus.</span></h1>
+        <p class="hero-description">The camera is the simplest instrument a photographer carries, and the most honest. basic gives you <span style="color:#F3EEE3;">shutter priority and aperture priority</span>, one ruler, one cream shutter, nothing between you and the frame. Shoot ProRAW DNG or JPEG.</p>
+        <div class="hero-buttons">
+          <a href="#get" class="btn-primary">Coming Soon on the App Store</a>
+          <a href="#ruler" class="btn-secondary">See how it feels →</a>
         </div>
-        <div class="mono" style="font-size:12px;letter-spacing:1px;color:rgba(243,238,227,.4);">Apple ProRAW DNG or JPEG · In colour · iPhone 14 Pro Max and later</div>
+        <div class="mono hero-subtext">Apple ProRAW DNG or JPEG · In colour · iPhone 14 Pro Max and later</div>
       </div>
-      <div style="display:flex;justify-content:center;">
-        <div style="transform:rotate(2deg);">
+      <div class="hero-mockup">
+        <div class="rotate-wrap-right">
           <CaptureMock slotId="hero-shot" photo="/images/hero-car.jpg" pos="center 78%" placeholder="DROP A STREET FRAME" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" look="Neutral" />
         </div>
       </div>
     </header>
 
     <!-- ============ MANIFESTO ============ -->
-    <section class="reveal" style="padding:120px 64px;max-width:1000px;margin:0 auto;text-align:center;">
-      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:300;font-size:46px;line-height:1.25;letter-spacing:-.5px;margin:0;color:#F3EEE3;text-wrap:balance;">One frame. One ruler. One shutter.<br />The rest gets out of the way.</h2>
-      <p style="font-size:18px;line-height:1.75;color:rgba(243,238,227,.6);max-width:680px;margin:34px auto 0;">The camera that demands nothing of you will give nothing back. The one that forces you to choose your shutter speed, to commit to a priority, to see before you press, that one teaches you to see. basic is that camera. Two modes. One screen. The whole app.</p>
+    <section class="manifesto-section reveal">
+      <h2 class="manifesto-title">One frame. One ruler. One shutter.<br />The rest gets out of the way.</h2>
+      <p class="manifesto-text">The camera that demands nothing of you will give nothing back. The one that forces you to choose your shutter speed, to commit to a priority, to see before you press, that one teaches you to see. basic is that camera. Two modes. One screen. The whole app.</p>
     </section>
 
     <!-- ============ THE RULER ============ -->
-    <section id="ruler" class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
-      <div>
+    <section id="ruler" class="ruler-section reveal">
+      <div class="ruler-content">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:22px;">The exposure ruler</div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.08;letter-spacing:-1px;margin:0 0 26px;color:#F3EEE3;">Your thumb is the dial.</h2>
+        <h2 class="ruler-title">Your thumb is the dial.</h2>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">Drag anywhere along the ruler and the stops glide under a fixed brass needle. In <span style="color:#C9A35B;font-weight:600;">S</span> it drives shutter speed, from Bulb to <span style="color:#F3EEE3;">1/2000</span>. In <span style="color:#C9A35B;font-weight:600;">A</span>, aperture intent from ƒ1.4 to ƒ16.</p>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">The reading turns brass while you move. It turns <span style="color:#D9913C;">amber</span> the moment the light runs out and ISO hits its ceiling, no silent correction, no invisible fix. You know when you are at the edge.</p>
         <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:19px;line-height:1.6;color:rgba(243,238,227,.8);margin:0 0 24px;border-left:2px solid #C9A35B;padding-left:20px;">The great photographers worked by feel. Winogrand on a New York sidewalk never looked down at a meter. He had calibrated his hands. basic gives your hands the same calibration on glass.</p>
@@ -106,10 +106,10 @@ const specs = [
       </div>
 
       <!-- interactive ruler demo -->
-      <div style="background:#0a0a0b;border:1px solid rgba(243,238,227,.08);border-radius:24px;padding:44px 30px;display:flex;flex-direction:column;align-items:center;">
+      <div class="ruler-demo-card">
         <div style="display:flex;gap:8px;margin-bottom:28px;">
-          <button id="s-btn" style="width:46px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:18px;font-weight:700;cursor:pointer;transition:all .15s;background:rgba(201,163,91,.16);border:1.5px solid #C9A35B;color:#C9A35B;">S</button>
-          <button id="a-btn" style="width:46px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:18px;font-weight:700;cursor:pointer;transition:all .15s;background:rgba(243,238,227,.05);border:1.5px solid transparent;color:rgba(243,238,227,.6);">A</button>
+          <button id="s-btn" class="mode-btn active-mode">S</button>
+          <button id="a-btn" class="mode-btn">A</button>
         </div>
         <div id="big-val" class="mono" style="font-size:46px;font-weight:600;letter-spacing:1px;color:#F3EEE3;margin-bottom:6px;">1/250</div>
         <div id="ev-val" class="mono" style="font-size:12px;font-weight:600;letter-spacing:1px;color:#C9A35B;height:16px;opacity:0;transition:opacity .2s;">0.0 EV</div>
@@ -134,107 +134,107 @@ const specs = [
     </section>
 
     <!-- ============ TWO MODES ============ -->
-    <section class="reveal" style="padding:60px 64px 110px;max-width:1280px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <div style="background:linear-gradient(160deg,#141410,#0a0a0b);border:1px solid rgba(201,163,91,.18);border-radius:20px;padding:38px;">
-          <div class="mono" style="font-size:40px;font-weight:700;color:#C9A35B;margin-bottom:14px;">S</div>
-          <div style="font-size:21px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Shutter priority</div>
-          <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Set the ceiling; the sensor finds the light. Native to iPhone, and honest. From Bulb to 1/2000.</p>
+    <section class="modes-section reveal">
+      <div class="modes-grid">
+        <div class="mode-card">
+          <div class="mono card-letter">S</div>
+          <div class="card-title">Shutter priority</div>
+          <p class="card-text">Set the ceiling; the sensor finds the light. Native to iPhone, and honest. From Bulb to 1/2000.</p>
         </div>
-        <div style="background:linear-gradient(160deg,#141410,#0a0a0b);border:1px solid rgba(201,163,91,.18);border-radius:20px;padding:38px;">
-          <div class="mono" style="font-size:40px;font-weight:700;color:#C9A35B;margin-bottom:14px;">A</div>
-          <div style="font-size:21px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Aperture priority</div>
-          <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Exposure intent, you set the depth of field in mind, the system finds the exposure. ƒ1.4 to ƒ16.</p>
+        <div class="mode-card">
+          <div class="mono card-letter">A</div>
+          <div class="card-title">Aperture priority</div>
+          <p class="card-text">Exposure intent, you set the depth of field in mind, the system finds the exposure. ƒ1.4 to ƒ16.</p>
         </div>
       </div>
     </section>
 
     <!-- ============ ESSAYS ============ -->
-    <section class="reveal" style="padding:90px 64px;border-top:1px solid rgba(243,238,227,.07);border-bottom:1px solid rgba(243,238,227,.07);background:#060606;">
-      <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;">
+    <section class="essays-section reveal">
+      <div class="essays-grid">
         <div>
-          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On seeing</div>
-          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">The photograph is not made at the moment of pressing the shutter. It is made in the fractions of a second before, when the eye and the hand and the light align. basic removes every obstacle between that alignment and the frame.</p>
+          <div class="mono essay-tag">On seeing</div>
+          <p class="essay-text">The photograph is not made at the moment of pressing the shutter. It is made in the fractions of a second before, when the eye and the hand and the light align. basic removes every obstacle between that alignment and the frame.</p>
         </div>
         <div>
-          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On priority modes</div>
-          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">Shutter-priority is native to iPhone and honest. You set the ceiling; the sensor finds the light. Aperture-priority is exposure intent, you set the depth of field in mind, the system finds the exposure. Two decisions. Both yours.</p>
+          <div class="mono essay-tag">On priority modes</div>
+          <p class="essay-text">Shutter-priority is native to iPhone and honest. You set the ceiling; the sensor finds the light. Aperture-priority is exposure intent, you set the depth of field in mind, the system finds the exposure. Two decisions. Both yours.</p>
         </div>
         <div>
-          <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:16px;">On the file</div>
-          <p style="font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.7;color:rgba(243,238,227,.74);margin:0;">In DNG, every frame saves Apple ProRAW, untouched by any look the app makes, exactly what the sensor saw. In JPEG, what you composed is what lands in your library, look baked in. Your choice, on the frame.</p>
+          <div class="mono essay-tag">On the file</div>
+          <p class="essay-text">In DNG, every frame saves Apple ProRAW, untouched by any look the app makes, exactly what the sensor saw. In JPEG, what you composed is what lands in your library, look baked in. Your choice, on the frame.</p>
         </div>
       </div>
     </section>
 
     <!-- ============ LOOKS ============ -->
-    <section id="looks" class="reveal" style="padding:120px 64px;max-width:1280px;margin:0 auto;">
+    <section id="looks" class="looks-section reveal">
       <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Looks render live</div>
-      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">Compose in the look.</h2>
-      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:660px;margin:0 0 56px;">basic is a colour camera. The viewfinder shows true colour by default, Neutral. Mono is a choice, not the identity. The look renders live; in DNG the ProRAW file saves exactly as the sensor produced it, in JPEG the look is baked in. Swipe down on the frame to cycle looks; the Action Button toggles without moving the phone.</p>
+      <h2 class="looks-title">Compose in the look.</h2>
+      <p class="looks-description">basic is a colour camera. The viewfinder shows true colour by default, Neutral. Mono is a choice, not the identity. The look renders live; in DNG the ProRAW file saves exactly as the sensor produced it, in JPEG the look is baked in. Swipe down on the frame to cycle looks; the Action Button toggles without moving the phone.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px;align-items:start;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <CaptureMock slotId="look-shot-neutral" photo="/images/look-boat.jpg" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" />
-          <div style="text-align:center;margin-top:26px;max-width:300px;">
-            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Neutral <span style="font-size:12px;font-weight:600;color:#C9A35B;letter-spacing:1px;">· DEFAULT</span></div>
-            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">Display P3, colour-managed, no curve, true colour, exactly as the sensor saw it. basic is a colour camera first; this is it out of the box.</p>
+      <div class="looks-grid">
+        <div class="look-card">
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-neutral" photo="/images/look-boat.jpg" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
+          <div class="look-info">
+            <div class="look-name">Neutral <span class="look-tag default">· DEFAULT</span></div>
+            <p class="look-desc">Display P3, colour-managed, no curve, true colour, exactly as the sensor saw it. basic is a colour camera first; this is it out of the box.</p>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <CaptureMock slotId="look-shot-faded" photo="/images/look-boat.jpg" look="Faded" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" />
-          <div style="text-align:center;margin-top:26px;max-width:300px;">
-            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Faded</div>
-            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">Muted colour, warm shadows, restrained saturation. A quiet, filmic frame. The look of a photograph that has been somewhere and come back.</p>
+        <div class="look-card">
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-faded" photo="/images/look-boat.jpg" look="Faded" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" /></div>
+          <div class="look-info">
+            <div class="look-name">Faded</div>
+            <p class="look-desc">Muted colour, warm shadows, restrained saturation. A quiet, filmic frame. The look of a photograph that has been somewhere and come back.</p>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <CaptureMock slotId="look-shot-mono" photo="/images/look-boat.jpg" look="Mono" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" />
-          <div style="text-align:center;margin-top:26px;max-width:300px;">
-            <div style="font-size:20px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Mono <span style="font-size:12px;font-weight:600;color:rgba(243,238,227,.4);letter-spacing:1px;">· OPTIONAL</span></div>
-            <p style="font-size:14px;line-height:1.6;color:rgba(243,238,227,.56);margin:0;">High-acuity black and white when you want it. Deep blacks, gentle highlight roll-off. A choice you reach for, never the whole product.</p>
+        <div class="look-card">
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-mono" photo="/images/look-boat.jpg" look="Mono" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" /></div>
+          <div class="look-info">
+            <div class="look-name">Mono <span class="look-tag optional">· OPTIONAL</span></div>
+            <p class="look-desc">High-acuity black and white when you want it. Deep blacks, gentle highlight roll-off. A choice you reach for, never the whole product.</p>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:50px;background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:16px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;max-width:760px;">
+      <div class="looks-note">
         <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;flex:none;margin-top:2px;">NOTE</div>
         <p style="font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);margin:0;">Looks apply to the live viewfinder always. In DNG mode the ProRAW file written to your library is never modified by any look, at any time, in any mode. In JPEG mode the look you see is baked into the saved file.</p>
       </div>
     </section>
 
     <!-- ============ LENSES ============ -->
-    <section id="lenses" class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;border-top:1px solid rgba(243,238,227,.07);">
+    <section id="lenses" class="lenses-section reveal">
       <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">The honest lens map</div>
-      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">No invented numbers.</h2>
-      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:660px;margin:0 0 50px;">Built for the iPhone Pro camera system, 14 Pro Max and later. Every focal length is the real 35mm equivalent: 2× is labelled exactly what it is, Macro is a lens you choose, not a silent switch. Swipe left or right on the frame to move between lenses; the focal length flashes, then disappears.</p>
+      <h2 class="lenses-title">No invented numbers.</h2>
+      <p class="lenses-description">Built for the iPhone Pro camera system, 14 Pro Max and later. Every focal length is the real 35mm equivalent: 2× is labelled exactly what it is, Macro is a lens you choose, not a silent switch. Swipe left or right on the frame to move between lenses; the focal length flashes, then disappears.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <div class="lenses-grid">
         {lensCards.map(L => (
-          <div style="background:linear-gradient(160deg,#121210,#0a0a0b);border:1px solid rgba(243,238,227,.08);border-radius:18px;padding:28px 22px;">
-            <div class="mono" style="font-size:30px;font-weight:700;color:#C9A35B;margin-bottom:14px;">{L.pill}</div>
-            <div style="font-size:22px;font-weight:600;color:#F3EEE3;margin-bottom:4px;">{L.mm}</div>
-            <div style="font-size:13px;color:rgba(243,238,227,.5);line-height:1.5;">{L.desc}</div>
+          <div class="lens-card">
+            <div class="mono lens-pill">{L.pill}</div>
+            <div class="lens-mm">{L.mm}</div>
+            <div class="lens-desc">{L.desc}</div>
           </div>
         ))}
       </div>
-      <div style="margin-top:34px;background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:14px;padding:20px 24px;max-width:780px;font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);">On iPhone 14 Pro Max the telephoto reaches 3× (77mm); 15 Pro Max and later add the 5× (120mm) tetraprism. basic discovers whatever glass your device ships, and never prints a number it cannot deliver.</div>
+      <div class="lenses-banner">On iPhone 14 Pro Max the telephoto reaches 3× (77mm); 15 Pro Max and later add the 5× (120mm) tetraprism. basic discovers whatever glass your device ships, and never prints a number it cannot deliver.</div>
       <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:18px;color:rgba(243,238,227,.62);margin:34px 0 0;max-width:620px;">Robert Frank walked with a 50mm and the world was enough. The glass matters only when the photographer does not.</p>
     </section>
 
     <!-- ============ APERTURE-PRIORITY HONESTY ============ -->
-    <section class="reveal" style="padding:110px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);border-bottom:1px solid rgba(243,238,227,.07);">
+    <section class="aperture-section reveal">
       <div style="max-width:1100px;margin:0 auto;">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Aperture-priority, honestly</div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:46px;line-height:1.1;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">iPhone has a fixed aperture. We say so.</h2>
+        <h2 class="aperture-title">iPhone has a fixed aperture. We say so.</h2>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:680px;margin:0 0 14px;">In A-mode, the dial sets exposure intent via bias, the system finds the shutter speed and ISO to hold your target. Optional simulated depth of field renders in the live viewfinder only. The DNG is never blurred. The physical aperture is always printed in the readout, not a fiction.</p>
         <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:680px;margin:0 0 44px;">No surprises, and nothing hidden behind a settings screen, because there isn't one. The camera that earns your trust does not hide what it cannot do.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(243,238,227,.08);border:1px solid rgba(243,238,227,.08);border-radius:14px;overflow:hidden;">
+        <div class="aperture-grid">
           {aperRows.map(R => (
-            <div style="background:#0a0a0b;padding:24px 18px;">
-              <div class="mono" style="font-size:11px;letter-spacing:1px;color:rgba(243,238,227,.42);text-transform:uppercase;margin-bottom:12px;line-height:1.4;">{R.k}</div>
-              <div style="font-size:15px;font-weight:600;color:#F3EEE3;line-height:1.45;">{R.v}</div>
+            <div class="aperture-card">
+              <div class="mono aperture-key">{R.k}</div>
+              <div class="aperture-value">{R.v}</div>
             </div>
           ))}
         </div>
@@ -242,18 +242,18 @@ const specs = [
     </section>
 
     <!-- ============ SELFIE ============ -->
-    <section class="reveal" style="padding:110px 64px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;">
-      <div style="display:flex;justify-content:center;">
-        <div style="transform:rotate(-2deg);">
+    <section class="selfie-section reveal">
+      <div class="selfie-mockup">
+        <div class="rotate-wrap-left">
           <CaptureMock slotId="selfie-shot" photo="/images/selfie.jpg" pos="46% 34%" selfie={true} mode="A" shutter="1/120" ap="ƒ2.2" iso="320" bigValue="ƒ2.8" look="Neutral" format="JPEG" />
         </div>
       </div>
-      <div>
+      <div class="selfie-content">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Rear and front</div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">Flip it around.</h2>
+        <h2 class="selfie-title">Flip it around.</h2>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:520px;margin:0 0 20px;">The flip control sits bottom-left of the frame, exactly where your thumb expects it. The same S/A dial, the same looks, the same cream shutter, pointed the other way.</p>
         <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:520px;margin:0 0 28px;">The front camera shoots <span style="color:#F3EEE3;">JPEG only</span>, Apple's front sensor doesn't offer ProRAW, and basic won't fake a DNG it can't produce. Flip back and your rear lens and format are restored exactly as you left them.</p>
-        <div class="mono" style="display:flex;gap:30px;font-size:12px;letter-spacing:.5px;color:rgba(243,238,227,.42);">
+        <div class="mono selfie-stats">
           <div><span style="color:#C9A35B;">FORMAT</span><br /><span style="color:#F3EEE3;font-size:14px;">JPEG, locked</span></div>
           <div><span style="color:#C9A35B;">CONTROL</span><br /><span style="color:#F3EEE3;font-size:14px;">Bottom-left flip</span></div>
           <div><span style="color:#C9A35B;">LOOKS</span><br /><span style="color:#F3EEE3;font-size:14px;">All three</span></div>
@@ -262,20 +262,20 @@ const specs = [
     </section>
 
     <!-- ============ SHUTTER ============ -->
-    <section class="reveal" style="padding:120px 64px;border-top:1px solid rgba(243,238,227,.07);">
+    <section class="shutter-section reveal">
       <div style="max-width:900px;margin:0 auto;text-align:center;">
         <div style="display:flex;justify-content:center;margin-bottom:44px;">
           <div style="width:150px;height:96px;border-radius:22px;background:#F3EEE3;border:3px solid #C9A35B;box-shadow:0 0 0 6px #000,0 0 60px rgba(201,163,91,.3);display:flex;align-items:center;justify-content:center;">
             <div style="width:120px;height:66px;border-radius:15px;border:1px solid rgba(0,0,0,.12);"></div>
           </div>
         </div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:50px;line-height:1.08;letter-spacing:-1px;margin:0 0 22px;color:#F3EEE3;text-wrap:balance;">The only button that matters.</h2>
+        <h2 class="shutter-title">The only button that matters.</h2>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:600px;margin:0 auto 14px;">Dead-center. Always live. Impossible to miss. The cream shutter is the heart of basic: one warm rectangle on pure black, ringed in brass. Never covered by UI. Never blocked by processing. Press it. The frame fires.</p>
         <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:600px;margin:0 auto 56px;">The volume buttons and Camera Control are also the shutter. The whole phone is a shutter.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div class="shutter-stats">
           {stats.map(S => (
-            <div style="background:#060606;border:1px solid rgba(243,238,227,.08);border-radius:18px;padding:32px 20px;">
+            <div class="stat-card">
               <div style="font-size:13px;color:rgba(243,238,227,.5);margin-bottom:12px;">{S.label}</div>
               <div class="mono" style="font-size:34px;font-weight:700;color:#C9A35B;">{S.val}</div>
             </div>
@@ -285,42 +285,42 @@ const specs = [
     </section>
 
     <!-- ============ THE APP ============ -->
-    <section class="reveal" style="padding:110px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);">
+    <section class="app-section reveal">
       <div style="max-width:1280px;margin:0 auto;">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">The app</div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 56px;color:#F3EEE3;">One screen. The whole app.</h2>
-        <div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;">
-          <div style="transform:rotate(-3deg);"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
-          <div style="transform:translateY(-18px);"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="DNG" /></div>
-          <div style="transform:rotate(3deg);"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="JPEG" /></div>
+        <h2 class="app-title">One screen. The whole app.</h2>
+        <div class="app-mockups">
+          <div class="app-mock-wrap app-left"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
+          <div class="app-mock-wrap app-mid"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="DNG" /></div>
+          <div class="app-mock-wrap app-right"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="JPEG" /></div>
         </div>
       </div>
     </section>
 
     <!-- ============ GESTURES ============ -->
-    <section class="reveal" style="padding:120px 64px;max-width:1100px;margin:0 auto;">
+    <section class="gestures-section reveal">
       <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Everything is on the frame</div>
-      <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.05;letter-spacing:-1px;margin:0 0 18px;color:#F3EEE3;">No menus. Just the frame.</h2>
-      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:620px;margin:0 0 50px;">There is no settings screen. There is no gear, no swipe-up sheet, no onboarding. Every control lives on the capture screen or a direct gesture. The frame is never interrupted.</p>
+      <h2 class="gestures-title">No menus. Just the frame.</h2>
+      <p class="gestures-description">There is no settings screen. There is no gear, no swipe-up sheet, no onboarding. Every control lives on the capture screen or a direct gesture. The frame is never interrupted.</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 56px;">
+      <div class="gestures-grid">
         {gestures.map(G => (
-          <div style="display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid rgba(243,238,227,.08);">
-            <div style="font-size:15px;font-weight:600;color:#F3EEE3;flex:none;">{G.g}</div>
-            <div style="font-size:14px;color:rgba(243,238,227,.56);text-align:right;">{G.a}</div>
+          <div class="gesture-row">
+            <div class="gesture-name">{G.g}</div>
+            <div class="gesture-action">{G.a}</div>
           </div>
         ))}
       </div>
     </section>
 
     <!-- ============ SPECS ============ -->
-    <section id="specs" class="reveal" style="padding:100px 64px;background:#060606;border-top:1px solid rgba(243,238,227,.07);">
+    <section id="specs" class="specs-section reveal">
       <div style="max-width:1100px;margin:0 auto;">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(243,238,227,.08);border:1px solid rgba(243,238,227,.08);border-radius:16px;overflow:hidden;">
+        <div class="specs-grid">
           {specs.map(P => (
-            <div style="background:#0a0a0b;padding:30px 24px;">
-              <div class="mono" style="font-size:11px;letter-spacing:1.5px;color:#C9A35B;text-transform:uppercase;margin-bottom:12px;">{P.k}</div>
-              <div style="font-size:16px;font-weight:600;color:#F3EEE3;line-height:1.45;">{P.v}</div>
+            <div class="spec-card">
+              <div class="mono spec-key">{P.k}</div>
+              <div class="spec-value">{P.v}</div>
             </div>
           ))}
         </div>
@@ -328,25 +328,25 @@ const specs = [
     </section>
 
     <!-- ============ CTA ============ -->
-    <section id="get" class="reveal" style="padding:130px 64px;text-align:center;">
+    <section id="get" class="cta-section reveal">
       <div style="max-width:720px;margin:0 auto;">
         <div style="width:92px;height:92px;border-radius:21px;margin:0 auto 34px;overflow:hidden;border:1px solid rgba(243,238,227,.12);background:#000; display:flex; align-items:center; justify-content:center;">
           <img src="/icon-180.png" style="width:100%;height:100%;object-fit:cover;" alt="basic logo" />
         </div>
-        <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:62px;line-height:1.04;letter-spacing:-1.5px;margin:0 0 24px;color:#F3EEE3;">Go shoot.</h2>
-        <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.64);max-width:520px;margin:0 auto 16px;">basic is a one-time purchase. No subscription, no account, no cloud, no analytics. Your photographs never leave the phone unless you put them there.</p>
+        <h2 class="cta-title">Go shoot.</h2>
+        <p class="cta-desc">basic is a one-time purchase. No subscription, no account, no cloud, no analytics. Your photographs never leave the phone unless you put them there.</p>
         <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:19px;color:rgba(243,238,227,.78);margin:0 0 40px;">The camera that earns your trust and asks nothing in return.</p>
-        <a href="#get" style="display:inline-block;background:#C9A35B;color:#0a0a0b;font-weight:600;font-size:16px;padding:17px 32px;border-radius:12px;text-decoration:none;">Coming Soon on the App Store</a>
+        <a href="#get" class="cta-btn">Coming Soon on the App Store</a>
         <div class="mono" style="font-size:13px;letter-spacing:1px;color:rgba(243,238,227,.42);margin-top:18px;">$4.99 · one time</div>
       </div>
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer style="padding:60px 64px;border-top:1px solid rgba(243,238,227,.08);">
-      <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;">
+    <footer class="footer">
+      <div class="footer-container">
         <div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <img src="/icon-60.png" style="width:20px;height:20px;border-radius:4.5px;object-fit:cover;" alt="basic logo" />
+            <img src="/icon-120.png" style="width:24px;height:24px;border-radius:5px;object-fit:cover;" alt="basic logo" />
             <span style="font-size:18px;font-weight:600;letter-spacing:-.5px;">basic</span>
           </div>
           <div style="font-size:14px;color:rgba(243,238,227,.5);line-height:1.6;">a priority-mode camera for iPhone<br />a <a href="https://raastey.co" style="color:#C9A35B;text-decoration:none;">raastey.co</a> venture</div>
@@ -370,6 +370,1008 @@ const specs = [
 
   </div>
 </Layout>
+
+<style>
+  /* ============ CUSTOM CSS RESPONSIVE STYLING (MOBILE-FIRST) ============ */
+  
+  /* --- NAV --- */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(243,238,227,.07);
+    transition: background 0.3s, padding 0.3s;
+  }
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .2px;
+  }
+  .nav-link {
+    display: none;
+    color: rgba(243,238,227,.62);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .nav-link:hover {
+    color: #F3EEE3;
+  }
+  .nav-btn {
+    color: #0a0a0b;
+    background: #C9A35B;
+    padding: 9px 17px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color .2s ease, transform .2s ease;
+  }
+  .nav-btn:hover {
+    background: #e5ba6a;
+    transform: translateY(-1px);
+  }
+  .nav-btn:active {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 769px) {
+    .navbar {
+      padding: 18px 40px;
+    }
+    .nav-link {
+      display: block;
+    }
+    .nav-menu {
+      gap: 30px;
+    }
+  }
+
+  /* --- HERO --- */
+  .hero-section {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 110px 24px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+    margin: 0 0 20px;
+    color: #F3EEE3;
+    text-wrap: balance;
+  }
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.66);
+    max-width: 100%;
+    margin: 0 auto 28px;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .btn-primary {
+    background: #C9A35B;
+    color: #0a0a0b;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 26px;
+    border-radius: 11px;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    transition: background-color .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover {
+    background: #e5ba6a;
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    color: #F3EEE3;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,163,91,.5);
+    padding-bottom: 3px;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .btn-secondary:hover {
+    color: #C9A35B;
+    border-color: #C9A35B;
+  }
+  .hero-subtext {
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: rgba(243,238,227,.4);
+  }
+  .hero-mockup {
+    display: flex;
+    justify-content: center;
+  }
+  .rotate-wrap-right, .rotate-wrap-left {
+    transform: none;
+  }
+
+  @media (min-width: 769px) {
+    .hero-section {
+      grid-template-columns: 1.1fr .9fr;
+      padding: 150px 64px 80px;
+      text-align: left;
+      gap: 40px;
+    }
+    .hero-title {
+      font-size: 78px;
+      line-height: 1.02;
+      letter-spacing: -1.5px;
+      margin: 0 0 28px;
+    }
+    .hero-description {
+      font-size: 19px;
+      line-height: 1.65;
+      max-width: 480px;
+      margin: 0 0 36px;
+    }
+    .hero-buttons {
+      flex-direction: row;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .btn-primary {
+      width: auto;
+    }
+    .hero-subtext {
+      font-size: 12px;
+    }
+    .rotate-wrap-right {
+      transform: rotate(2deg);
+    }
+    .rotate-wrap-left {
+      transform: rotate(-2deg);
+    }
+  }
+
+  /* --- MANIFESTO --- */
+  .manifesto-section {
+    padding: 80px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .manifesto-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: -.5px;
+    margin: 0;
+    color: #F3EEE3;
+    text-wrap: balance;
+  }
+  .manifesto-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(243,238,227,.6);
+    max-width: 680px;
+    margin: 24px auto 0;
+  }
+
+  @media (min-width: 769px) {
+    .manifesto-section {
+      padding: 120px 64px;
+    }
+    .manifesto-title {
+      font-size: 46px;
+      line-height: 1.25;
+    }
+    .manifesto-text {
+      font-size: 18px;
+      line-height: 1.75;
+      margin-top: 34px;
+    }
+  }
+
+  /* --- THE RULER --- */
+  .ruler-section {
+    padding: 60px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .ruler-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 20px;
+    color: #F3EEE3;
+  }
+  .ruler-demo-card {
+    background: #0a0a0b;
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 24px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .mode-btn {
+    width: 46px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    font-family: 'SF Mono', ui-monospace, monospace;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .15s;
+    background: rgba(243,238,227,.05);
+    border: 1.5px solid transparent;
+    color: rgba(243,238,227,.6);
+  }
+  .mode-btn.active-mode {
+    background: rgba(201,163,91,.16);
+    border: 1.5px solid #C9A35B;
+    color: #C9A35B;
+  }
+
+  @media (min-width: 769px) {
+    .ruler-section {
+      grid-template-columns: 1fr 1fr;
+      padding: 110px 64px;
+      gap: 64px;
+    }
+    .ruler-title {
+      font-size: 52px;
+      line-height: 1.08;
+      margin-bottom: 26px;
+    }
+    .ruler-demo-card {
+      padding: 44px 30px;
+    }
+  }
+
+  /* --- TWO MODES --- */
+  .modes-section {
+    padding: 30px 24px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .modes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .mode-card {
+    background: linear-gradient(160deg,#141410,#0a0a0b);
+    border: 1px solid rgba(201,163,91,.18);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .card-letter {
+    font-size: 40px;
+    font-weight: 700;
+    color: #C9A35B;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 600;
+    color: #F3EEE3;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.6);
+    margin: 0;
+  }
+
+  @media (min-width: 769px) {
+    .modes-section {
+      padding: 60px 64px 110px;
+    }
+    .modes-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .mode-card {
+      padding: 38px;
+    }
+  }
+
+  /* --- ESSAYS --- */
+  .essays-section {
+    padding: 60px 24px;
+    border-top: 1px solid rgba(243,238,227,.07);
+    border-bottom: 1px solid rgba(243,238,227,.07);
+    background: #060606;
+  }
+  .essays-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .essay-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #C9A35B;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .essay-text {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(243,238,227,.74);
+    margin: 0;
+  }
+
+  @media (min-width: 769px) {
+    .essays-section {
+      padding: 90px 64px;
+    }
+    .essays-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+    .essay-text {
+      font-size: 17px;
+      line-height: 1.7;
+    }
+  }
+
+  /* --- LOOKS --- */
+  .looks-section {
+    padding: 80px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .looks-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 18px;
+    color: #F3EEE3;
+  }
+  .looks-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.66);
+    max-width: 660px;
+    margin: 0 0 40px;
+  }
+  .looks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .look-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .look-info {
+    text-align: center;
+    margin-top: 20px;
+    max-width: 300px;
+  }
+  .look-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #F3EEE3;
+    margin-bottom: 8px;
+  }
+  .look-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .look-tag.default {
+    color: #C9A35B;
+  }
+  .look-tag.optional {
+    color: rgba(243,238,227,.4);
+  }
+  .look-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.56);
+    margin: 0;
+  }
+  .looks-note {
+    margin-top: 40px;
+    background: #060606;
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    max-width: 760px;
+  }
+
+  @media (min-width: 769px) {
+    .looks-section {
+      padding: 120px 64px;
+    }
+    .looks-title {
+      font-size: 52px;
+      line-height: 1.05;
+    }
+    .looks-description {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+    .looks-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+    }
+    .look-info {
+      margin-top: 26px;
+    }
+    .looks-note {
+      padding: 24px 28px;
+      margin-top: 50px;
+    }
+  }
+
+  /* --- LENSES --- */
+  .lenses-section {
+    padding: 60px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(243,238,227,.07);
+  }
+  .lenses-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 18px;
+    color: #F3EEE3;
+  }
+  .lenses-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.66);
+    max-width: 660px;
+    margin: 0 0 30px;
+  }
+  .lenses-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 10px 24px 24px;
+    margin: 0 -24px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lens-card {
+    background: linear-gradient(160deg,#121210,#0a0a0b);
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 18px;
+    padding: 28px 22px;
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .lens-card:hover {
+    border-color: rgba(201,163,91,.4);
+    transform: translateY(-2px);
+  }
+  .lens-pill {
+    font-size: 30px;
+    font-weight: 700;
+    color: #C9A35B;
+    margin-bottom: 14px;
+  }
+  .lens-mm {
+    font-size: 22px;
+    font-weight: 600;
+    color: #F3EEE3;
+    margin-bottom: 4px;
+  }
+  .lens-desc {
+    font-size: 13px;
+    color: rgba(243,238,227,.5);
+    line-height: 1.5;
+  }
+  .lenses-banner {
+    margin-top: 34px;
+    background: #060606;
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 14px;
+    padding: 16px 20px;
+    max-width: 780px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(243,238,227,.6);
+  }
+
+  @media (min-width: 769px) {
+    .lenses-section {
+      padding: 110px 64px;
+    }
+    .lenses-title {
+      font-size: 52px;
+      line-height: 1.05;
+    }
+    .lenses-description {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+    .lenses-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+    .lens-card {
+      flex: none;
+    }
+    .lenses-banner {
+      padding: 20px 24px;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+  }
+
+  /* --- APERTURE HONESTY --- */
+  .aperture-section {
+    padding: 60px 24px;
+    background: #060606;
+    border-top: 1px solid rgba(243,238,227,.07);
+    border-bottom: 1px solid rgba(243,238,227,.07);
+  }
+  .aperture-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin: 0 0 18px;
+    color: #F3EEE3;
+  }
+  .aperture-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .aperture-card {
+    background: #0a0a0b;
+    border-radius: 12px;
+    border: 1px solid rgba(243,238,227,.08);
+    padding: 20px 18px;
+    transition: border-color .2s;
+  }
+  .aperture-card:hover {
+    border-color: rgba(201,163,91,.25);
+  }
+  .aperture-key {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(243,238,227,.42);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .aperture-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F3EEE3;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 769px) {
+    .aperture-section {
+      padding: 110px 64px;
+    }
+    .aperture-title {
+      font-size: 46px;
+      line-height: 1.1;
+    }
+    .aperture-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(243,238,227,.08);
+      border: 1px solid rgba(243,238,227,.08);
+      border-radius: 14px;
+    }
+    .aperture-card {
+      border-radius: 0;
+      border: none;
+      padding: 24px 18px;
+    }
+  }
+
+  /* --- SELFIE --- */
+  .selfie-section {
+    padding: 60px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .selfie-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 18px;
+    color: #F3EEE3;
+  }
+  .selfie-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+    letter-spacing: .5px;
+    color: rgba(243,238,227,.42);
+  }
+  .selfie-mockup {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 769px) {
+    .selfie-section {
+      grid-template-columns: .9fr 1.1fr;
+      padding: 110px 64px;
+      gap: 64px;
+    }
+    .selfie-title {
+      font-size: 52px;
+      line-height: 1.05;
+    }
+    .selfie-stats {
+      flex-direction: row;
+      gap: 30px;
+    }
+  }
+
+  /* --- SHUTTER --- */
+  .shutter-section {
+    padding: 80px 24px;
+    border-top: 1px solid rgba(243,238,227,.07);
+  }
+  .shutter-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin: 0 0 22px;
+    color: #F3EEE3;
+    text-wrap: balance;
+  }
+  .shutter-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    background: #060606;
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 18px;
+    padding: 24px 20px;
+  }
+
+  @media (min-width: 769px) {
+    .shutter-section {
+      padding: 120px 64px;
+    }
+    .shutter-title {
+      font-size: 50px;
+      line-height: 1.08;
+    }
+    .shutter-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .stat-card {
+      padding: 32px 20px;
+    }
+  }
+
+  /* --- THE APP MOCKUPS --- */
+  .app-section {
+    padding: 60px 24px;
+    background: #060606;
+    border-top: 1px solid rgba(243,238,227,.07);
+  }
+  .app-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 40px;
+    color: #F3EEE3;
+    text-align: center;
+  }
+  .app-mockups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .app-mock-wrap {
+    flex: 0 0 auto;
+  }
+
+  @media (min-width: 769px) {
+    .app-section {
+      padding: 110px 64px;
+    }
+    .app-title {
+      font-size: 52px;
+      line-height: 1.05;
+      margin-bottom: 56px;
+    }
+    .app-mockups {
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+    }
+    .app-left {
+      transform: rotate(-3deg);
+    }
+    .app-mid {
+      transform: translateY(-18px);
+    }
+    .app-right {
+      transform: rotate(3deg);
+    }
+  }
+
+  /* --- GESTURES --- */
+  .gestures-section {
+    padding: 60px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .gestures-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 0 0 18px;
+    color: #F3EEE3;
+  }
+  .gestures-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.66);
+    max-width: 620px;
+    margin: 0 0 30px;
+  }
+  .gestures-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .gesture-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(243,238,227,.08);
+  }
+  .gesture-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F3EEE3;
+    flex: none;
+  }
+  .gesture-action {
+    font-size: 14px;
+    color: rgba(243,238,227,.56);
+    text-align: right;
+  }
+
+  @media (min-width: 769px) {
+    .gestures-section {
+      padding: 120px 64px;
+    }
+    .gestures-title {
+      font-size: 52px;
+      line-height: 1.05;
+    }
+    .gestures-description {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+    .gestures-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0 56px;
+    }
+    .gesture-row {
+      padding: 17px 0;
+    }
+  }
+
+  /* --- SPECS --- */
+  .specs-section {
+    padding: 40px 24px;
+    background: #060606;
+    border-top: 1px solid rgba(243,238,227,.07);
+  }
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(243,238,227,.08);
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .spec-card {
+    background: #0a0a0b;
+    padding: 20px 16px;
+  }
+  .spec-key {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #C9A35B;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .spec-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #F3EEE3;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 769px) {
+    .specs-section {
+      padding: 100px 64px;
+    }
+    .specs-grid {
+      grid-template-columns: repeat(4, 1fr);
+      border-radius: 16px;
+    }
+    .spec-card {
+      padding: 30px 24px;
+    }
+    .spec-value {
+      font-size: 16px;
+    }
+  }
+
+  /* --- CTA --- */
+  .cta-section {
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin: 0 0 24px;
+    color: #F3EEE3;
+  }
+  .cta-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(243,238,227,.64);
+    max-width: 520px;
+    margin: 0 auto 24px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #C9A35B;
+    color: #0a0a0b;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color .2s ease, transform .2s ease;
+  }
+  .cta-btn:hover {
+    background: #e5ba6a;
+    transform: translateY(-1px);
+  }
+
+  @media (min-width: 769px) {
+    .cta-section {
+      padding: 130px 64px;
+    }
+    .cta-title {
+      font-size: 62px;
+      line-height: 1.04;
+    }
+    .cta-desc {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .cta-btn {
+      width: auto;
+      padding: 17px 32px;
+    }
+  }
+
+  /* --- FOOTER --- */
+  .footer {
+    padding: 40px 24px;
+    border-top: 1px solid rgba(243,238,227,.08);
+  }
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (min-width: 769px) {
+    .footer {
+      padding: 60px 64px;
+    }
+    .footer-container {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 30px;
+    }
+  }
+</style>
+
 
 <script>
   // Client-side interactive dial logic
@@ -398,13 +1400,9 @@ const specs = [
 
   function modeBtnStyle(btn, active) {
     if (active) {
-      btn.style.background = 'rgba(201,163,91,.16)';
-      btn.style.border = '1.5px solid #C9A35B';
-      btn.style.color = '#C9A35B';
+      btn.classList.add('active-mode');
     } else {
-      btn.style.background = 'rgba(243,238,227,.05)';
-      btn.style.border = '1.5px solid transparent';
-      btn.style.color = 'rgba(243,238,227,.6)';
+      btn.classList.remove('active-mode');
     }
   }
 
@@ -453,9 +1451,10 @@ const specs = [
     apply();
   });
 
-  // Drag interaction
+  // Drag interaction with Pointer Capture for seamless touch tracking
   dialTrack?.addEventListener('pointerdown', (e) => {
     e.preventDefault();
+    dialTrack.setPointerCapture(e.pointerId);
     dialing = true;
     if (timerId) clearTimeout(timerId);
 
@@ -467,6 +1466,7 @@ const specs = [
     updateEV();
 
     function move(ev) {
+      if (!dialing) return;
       const delta = Math.round(-(ev.clientX - startX) / STEP);
       const nextIdx = Math.max(0, Math.min(maxIdx, startIdx + delta));
       if (nextIdx !== curIdx()) {
@@ -477,20 +1477,26 @@ const specs = [
         }
         apply();
         updateEV();
+        
+        // Haptic feedback tick for physical click simulation
+        if (navigator.vibrate) {
+          navigator.vibrate(8);
+        }
       }
     }
 
-    function up() {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
+    function up(ev) {
+      dialTrack.releasePointerCapture(ev.pointerId);
+      dialTrack.removeEventListener('pointermove', move);
+      dialTrack.removeEventListener('pointerup', up);
       timerId = setTimeout(() => {
         dialing = false;
         apply();
       }, 1100);
     }
 
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
+    dialTrack.addEventListener('pointermove', move);
+    dialTrack.addEventListener('pointerup', up);
   });
 
   dialTrack?.addEventListener('dblclick', (e) => {
