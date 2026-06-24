@@ -219,6 +219,54 @@ const specs = [
         ))}
       </div>
       <div class="lenses-banner">On iPhone 14 Pro Max the telephoto reaches 3× (77mm); 15 Pro Max and later add the 5× (120mm) tetraprism. basic discovers whatever glass your device ships, and never prints a number it cannot deliver.</div>
+
+      <!-- Lenses breakdown by generation -->
+      <div class="lenses-breakdown">
+        <div class="mono" style="font-size:12px;letter-spacing:2px;color:#C9A35B;text-transform:uppercase;margin-bottom:24px;border-bottom:1px solid rgba(243,238,227,.08);padding-bottom:10px;">Focal length map by generation</div>
+        
+        <div class="breakdown-grid">
+          <div class="breakdown-row">
+            <div class="mono model-name">iPhone 14 Pro Max</div>
+            <div class="focal-lengths">
+              <span class="focal-item"><strong>13mm</strong> (0.5×)</span>
+              <span class="focal-item"><strong>24mm</strong> (1×)</span>
+              <span class="focal-item"><strong>48mm</strong> (2× crop)</span>
+              <span class="focal-item"><strong>77mm</strong> (3×)</span>
+            </div>
+          </div>
+          <div class="breakdown-row">
+            <div class="mono model-name">iPhone 15 Pro Max</div>
+            <div class="focal-lengths">
+              <span class="focal-item"><strong>13mm</strong> (0.5×)</span>
+              <span class="focal-item"><strong>24mm</strong> (1×)</span>
+              <span class="focal-item"><strong>48mm</strong> (2× crop)</span>
+              <span class="focal-item"><strong>120mm</strong> (5×)</span>
+            </div>
+          </div>
+          <div class="breakdown-row">
+            <div class="mono model-name">iPhone 16 Pro Max</div>
+            <div class="focal-lengths">
+              <span class="focal-item"><strong>13mm</strong> (0.5×)</span>
+              <span class="focal-item"><strong>24mm</strong> (1×)</span>
+              <span class="focal-item"><strong>48mm</strong> (2× crop)</span>
+              <span class="focal-item"><strong>120mm</strong> (5×)</span>
+            </div>
+          </div>
+          <div class="breakdown-row">
+            <div class="mono model-name">iPhone 17 Pro Max</div>
+            <div class="focal-lengths">
+              <span class="focal-item"><strong>13mm</strong> (0.5×)</span>
+              <span class="focal-item"><strong>24mm</strong> (1×)</span>
+              <span class="focal-item"><strong>28mm</strong> (1.2× crop)</span>
+              <span class="focal-item"><strong>35mm</strong> (1.5× crop)</span>
+              <span class="focal-item"><strong>48mm</strong> (2× crop)</span>
+              <span class="focal-item"><strong>100mm</strong> (4×)</span>
+              <span class="focal-item"><strong>200mm</strong> (8× crop)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:18px;color:rgba(243,238,227,.62);margin:34px 0 0;max-width:620px;">Robert Frank walked with a 50mm and the world was enough. The glass matters only when the photographer does not.</p>
     </section>
 
@@ -925,6 +973,52 @@ const specs = [
     line-height: 1.5;
     color: rgba(243,238,227,.6);
   }
+  .lenses-breakdown {
+    margin-top: 48px;
+    background: #060606;
+    border: 1px solid rgba(243,238,227,.08);
+    border-radius: 20px;
+    padding: 24px 20px;
+    max-width: 900px;
+    text-align: left;
+  }
+  .breakdown-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .breakdown-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(243,238,227,.04);
+  }
+  .breakdown-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .model-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #C9A35B;
+  }
+  .focal-lengths {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+  .focal-item {
+    font-size: 13px;
+    color: rgba(243,238,227,.6);
+    background: rgba(243,238,227,.03);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(243,238,227,.05);
+  }
+  .focal-item strong {
+    color: #F3EEE3;
+  }
 
   @media (min-width: 769px) {
     .lenses-section {
@@ -955,6 +1049,25 @@ const specs = [
       padding: 20px 24px;
       font-size: 14px;
       line-height: 1.65;
+    }
+    .lenses-breakdown {
+      padding: 32px 30px;
+      margin-top: 60px;
+    }
+    .breakdown-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 18px;
+    }
+    .model-name {
+      flex: 0 0 200px;
+      font-size: 14px;
+    }
+    .focal-lengths {
+      flex: 1;
+      justify-content: flex-start;
     }
   }
 
