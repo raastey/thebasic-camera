@@ -90,8 +90,27 @@ const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
       )}
     </div>
 
-    <!-- rec dot -->
-    <div style="position:absolute;top:11px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:#34C759;box-shadow:0 0 7px rgba(52,199,89,.7);"></div>
+    <!-- exposure meter (S mode only) -->
+    {mode === 'S' && (
+      <div style="position:absolute;bottom:56px;left:50%;transform:translateX(-50%);width:160px;background:rgba(8,8,10,0.82);border-radius:6px;padding:8px 12px 6px;display:flex;flex-direction:column;align-items:center;gap:3px;backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.06); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+        <span style="font-size:10px;font-weight:700;color:#C9A35B;letter-spacing:0.5px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;text-shadow:0 1px 2px rgba(0,0,0,0.5);">0.0 EV</span>
+        <div style="position:relative;width:120px;height:12px;margin-top:2px;">
+          <!-- Rail -->
+          <div style="position:absolute;bottom:2px;left:0;right:0;height:1px;background:rgba(255,255,255,0.15);"></div>
+          <!-- Center major tick -->
+          <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:1px;height:11px;background:rgba(255,255,255,0.5);"></div>
+          <!-- Minor ticks -->
+          <div style="position:absolute;bottom:2px;left:0px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;left:20px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;left:40px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;right:40px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;right:20px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;right:0px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <!-- Needle -->
+          <div style="position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid #C9A35B;"></div>
+        </div>
+      </div>
+    )}
 
     <!-- mode letter -->
     <div style="position:absolute;top:11px;left:13px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.4px solid #C9A35B;border-radius:7px;color:#C9A35B;font-size:15px;font-weight:700;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;background:rgba(0,0,0,.28);backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);">
@@ -101,7 +120,11 @@ const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
     <!-- readout -->
     <div class="mono" style="position:absolute;top:11px;right:13px;text-align:right;text-shadow:0 1px 4px rgba(0,0,0,.7);">
       <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.2px;">{shutter} <span style="color:rgba(255,255,255,.55);">·</span> {ap}</div>
-      <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>ISO {iso}</div>
+      {mode === 'S' ? (
+        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>{isoMaxed ? 'OVER' : '0.0 EV'}</div>
+      ) : (
+        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>{isoMaxed ? 'ISO MAX' : `ISO ${iso}`}</div>
+      )}
     </div>
 
     <!-- look chevron -->
