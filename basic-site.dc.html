@@ -69,7 +69,7 @@
     <div>
       <div style="font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:22px;">The exposure ruler</div>
       <h2 style="font-family:'Spectral',Georgia,serif;font-weight:400;font-size:52px;line-height:1.08;letter-spacing:-1px;margin:0 0 26px;color:#F3EEE3;">Your thumb is the dial.</h2>
-      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">Drag anywhere along the ruler and the stops glide under a fixed brass needle. In <span style="color:#C9A35B;font-weight:600;">S</span> it drives shutter speed, from Bulb to <span style="color:#F3EEE3;">1/2000</span>. In <span style="color:#C9A35B;font-weight:600;">A</span>, aperture intent from ƒ1.4 to ƒ16.</p>
+      <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">Drag anywhere along the ruler and the stops glide under a fixed brass needle. In <span style="color:#C9A35B;font-weight:600;">S</span> it drives shutter speed, from Bulb to <span style="color:#F3EEE3;">1/2000</span>. In <span style="color:#C9A35B;font-weight:600;">A</span>, exposure compensation from <span style="color:#F3EEE3;">−3.0 to +3.0 EV</span>.</p>
       <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);margin:0 0 20px;">The reading turns brass while you move. It turns <span style="color:#D9913C;">amber</span> the moment the light runs out and ISO hits its ceiling, no silent correction, no invisible fix. You know when you are at the edge.</p>
       <p style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:19px;line-height:1.6;color:rgba(243,238,227,.8);margin:0 0 24px;border-left:2px solid #C9A35B;padding-left:20px;">The great photographers worked by feel. Winogrand on a New York sidewalk never looked down at a meter. He had calibrated his hands. basic gives your hands the same calibration on glass.</p>
       <div style="font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.5px;color:rgba(243,238,227,.42);line-height:1.9;">120fps tracking · haptic tick at every stop<br>hard end-stop at 1/2000 · tap the mode letter to toggle S ↔ A</div>
@@ -114,7 +114,7 @@
       <div style="background:linear-gradient(160deg,#141410,#0a0a0b);border:1px solid rgba(201,163,91,.18);border-radius:20px;padding:38px;">
         <div style="font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;font-size:40px;font-weight:700;color:#C9A35B;margin-bottom:14px;">A</div>
         <div style="font-size:21px;font-weight:600;color:#F3EEE3;margin-bottom:8px;">Aperture priority</div>
-        <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Exposure intent, you set the depth of field in mind, the system finds the exposure. ƒ1.4 to ƒ16.</p>
+        <p style="font-size:15px;line-height:1.6;color:rgba(243,238,227,.6);margin:0;">Locked at ƒ1.4 for maximum blur. Dial acts as ±EV compensation in ⅓ stops, capturing a processed depth JPEG.</p>
       </div>
     </div>
   </section>
@@ -343,10 +343,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { mode:'S', shutterIdx:14, apertureIdx:3, dialing:false };
+  state = { mode:'S', shutterIdx:14, apertureIdx:9, dialing:false };
 
   shutter = ['Bulb','30"','15"','8"','4"','2"','1"','1/2','1/4','1/8','1/15','1/30','1/60','1/125','1/250','1/500','1/1000','1/2000'];
-  aperture = ['ƒ1.4','ƒ2','ƒ2.8','ƒ4','ƒ5.6','ƒ8','ƒ11','ƒ16'];
+  evComp = ['-3.0','-2.7','-2.3','-2.0','-1.7','-1.3','-1.0','-0.7','-0.3','0','+0.3','+0.7','+1.0','+1.3','+1.7','+2.0','+2.3','+2.7','+3.0'];
   STEP = 25;
 
   setRoot = el => { this.rootEl = el; };
@@ -372,13 +372,14 @@ class Component extends DCLogic {
   apply(){
     if (this.rulerEl) this.rulerEl.style.transform = 'translateY(-50%) translateX(' + (-(this.curIdx()*this.STEP)) + 'px)';
     if (this.bigEl){
-      this.bigEl.textContent = this.state.mode==='S' ? this.shutter[this.state.shutterIdx] : this.aperture[this.state.apertureIdx];
+      const val = this.state.mode==='S' ? this.shutter[this.state.shutterIdx] : this.evComp[this.state.apertureIdx];
+      this.bigEl.textContent = this.state.mode==='S' ? val : val + ' EV';
       const maxed = this.state.mode==='S' && this.state.shutterIdx>=17;
       this.bigEl.style.color = maxed ? '#D9913C' : '#F3EEE3';
     }
     if (this.evEl) this.evEl.style.opacity = this.state.dialing ? '1' : '0';
-    if (this.loEl) this.loEl.textContent = this.state.mode==='S' ? 'Bulb' : 'ƒ1.4';
-    if (this.hiEl) this.hiEl.textContent = this.state.mode==='S' ? '1/2000' : 'ƒ16';
+    if (this.loEl) this.loEl.textContent = this.state.mode==='S' ? 'Bulb' : '-3.0';
+    if (this.hiEl) this.hiEl.textContent = this.state.mode==='S' ? '1/2000' : '+3.0';
   }
 
   setS = () => this.setState({ mode:'S' });
@@ -387,11 +388,18 @@ class Component extends DCLogic {
   dialDown = e => {
     e.preventDefault();
     const sx = e.clientX, startIdx = this.curIdx();
-    const max = (this.state.mode==='S'?this.shutter.length:this.aperture.length)-1;
+    const max = (this.state.mode==='S'?this.shutter.length:this.evComp.length)-1;
     this.setState({ dialing:true });
     clearTimeout(this._t);
     if (this.evEl){
-      const evShow = () => { const off=(this.state.mode==='S'?13:3)-this.curIdx(); this.evEl.textContent=((off*0.3>0?'+':'')+(off*0.3).toFixed(1))+' EV'; };
+      const evShow = () => {
+        if (this.state.mode==='S') {
+          const off = this.curIdx() - 13;
+          this.evEl.textContent = ((off*0.3>0?'+':'')+(off*0.3).toFixed(1))+' EV';
+        } else {
+          this.evEl.textContent = '';
+        }
+      };
       evShow();
     }
     const move = ev => {
@@ -399,7 +407,14 @@ class Component extends DCLogic {
       const ni = Math.max(0, Math.min(max, startIdx+delta));
       if (ni !== this.curIdx()){
         if (this.state.mode==='S') this.setState({ shutterIdx:ni }); else this.setState({ apertureIdx:ni });
-        const off=(this.state.mode==='S'?13:3)-ni; if(this.evEl) this.evEl.textContent=((off*0.3>0?'+':'')+(off*0.3).toFixed(1))+' EV';
+        if (this.evEl) {
+          if (this.state.mode==='S') {
+            const off = ni - 13;
+            this.evEl.textContent = ((off*0.3>0?'+':'')+(off*0.3).toFixed(1))+' EV';
+          } else {
+            this.evEl.textContent = '';
+          }
+        }
       }
     };
     const up = () => {
@@ -412,7 +427,7 @@ class Component extends DCLogic {
   };
   dialReset = e => {
     e && e.preventDefault();
-    if (this.state.mode==='S') this.setState({ shutterIdx:14, dialing:true }); else this.setState({ apertureIdx:3, dialing:true });
+    if (this.state.mode==='S') this.setState({ shutterIdx:14, dialing:true }); else this.setState({ apertureIdx:9, dialing:true });
     clearTimeout(this._t); this._t = setTimeout(()=>this.setState({ dialing:false }), 900);
   };
 
@@ -435,11 +450,11 @@ class Component extends DCLogic {
         { pill:'5×', mm:'120mm', desc:'telephoto · 15 Pro Max+' },
       ],
       aperRows:[
-        { k:'Dial reads', v:'ƒ1.4 – ƒ16' },
-        { k:'Physical aperture', v:'Fixed per lens' },
-        { k:'What moves', v:'Shutter + ISO (bias)' },
-        { k:'Preview depth', v:'Optional · viewfinder only' },
-        { k:'Saved file', v:'DNG unmodified' },
+        { k:'Dial reads', v:'±EV compensation (⅓ stops)' },
+        { k:'Aperture effect', v:'Locked at ƒ1.4 (max blur)' },
+        { k:'What moves', v:'Auto exposure target bias' },
+        { k:'Preview depth', v:'Live depth shader preview' },
+        { k:'Saved file', v:'JPEG with embedded depth & matte' },
       ],
       stats:[
         { label:'Cold launch to frame', val:'< 1.5s' },
@@ -448,27 +463,27 @@ class Component extends DCLogic {
       ],
       gestures:[
         { g:'Swipe down', a:'Cycle look, Mono / Faded / Neutral' },
-        { g:'Swipe left / right', a:'Switch rear lens, 0.5× / Macro / 1× / 2× / 4×' },
+        { g:'Swipe left / right', a:'Switch rear lens (S: full catalog; A: native stops only)' },
         { g:'Tap frame', a:'Set focus and meter point' },
         { g:'Long-press frame', a:'Lock AE/AF, holds both' },
         { g:'Two-finger twist', a:'Manual focus, transient scale' },
         { g:'Tap mode letter', a:'Toggle S ↔ A, instant' },
-        { g:'Tap 4:3', a:'Toggle the rule-of-thirds grid' },
-        { g:'Tap look name', a:'Open the look filmstrip' },
-        { g:'Tap DNG / JPEG', a:'Toggle format (rear only)' },
-        { g:'Tap flip', a:'Switch rear ↔ selfie' },
-        { g:'Double-tap dial', a:'Reset to 1/250 / ƒ4' },
+        { g:'Tap 4:3', a:'Toggle rule-of-thirds grid, histogram, and zebra' },
+        { g:'Tap ISO readout', a:'Cycle manual ISO in S-mode (cleanest → dirtiest)' },
+        { g:'Tap DNG / JPEG', a:'Toggle format (S-mode rear only; A-mode locks to JPEG)' },
+        { g:'Tap flip', a:'Switch rear ↔ selfie (locks format to JPEG)' },
+        { g:'Double-tap dial', a:'Reset dial to 1/250 (S) or 0.0 EV (A)' },
         { g:'Action Button', a:'Cycle look when in foreground' },
       ],
       specs:[
-        { k:'Modes', v:'S · A' },
-        { k:'Archive', v:'ProRAW DNG or JPEG' },
+        { k:'Modes', v:'S (Street - Shutter priority) · A (Portrait - Locked ƒ1.4)' },
+        { k:'Archive', v:'ProRAW DNG (S-mode rear) or Depth JPEG (A-mode / Selfie)' },
         { k:'Looks', v:'Mono · Faded · Neutral' },
+        { k:'Metering', v:'±EV meter, CPU histogram, highlight zebra (S-mode)' },
+        { k:'Low-light', v:'Automatic JPEG frame averaging (STACK) in S-mode' },
+        { k:'Lenses', v:'S-mode: full catalog (up to 8 stops) · A-mode: native glass stops only' },
         { k:'Privacy', v:'No network. No account. No analytics.' },
         { k:'Device', v:'iPhone 14 Pro Max & later' },
-        { k:'Lenses', v:'0.5× · Macro · 1× · 2× · 5×' },
-        { k:'Cameras', v:'Rear ProRAW · front JPEG' },
-        { k:'Subject', v:'Stills. Video is not this.' },
       ],
     };
   }
