@@ -26,10 +26,11 @@ const {
   <link rel="icon" type="image/svg+xml" href="/icon.svg" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
   <style is:global>
+    @import "../styles/tokens.css";
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: #000; color: #F3EEE3; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; margin: 0; }
-    ::selection { background: #C9A35B; color: #0a0a0b; }
+    body { background: var(--chrome); color: var(--cream); font-family: var(--font-label); -webkit-font-smoothing: antialiased; overflow-x: hidden; margin: 0; }
+    ::selection { background: var(--brass); color: var(--brass-text-on); }
     
     .mono { font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace; }
     

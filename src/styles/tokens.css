@@ -1,0 +1,50 @@
+/* basic — design tokens. Mirrors tokens.json & tokens.css of the camera app. */
+:root {
+  /* Color */
+  --chrome: #000;
+  --viewfinder: #0d0d0e;
+  --brass: #c9a35b;
+  --brass-text-on: #1a1407;
+  --cream: #f3eee3;
+  --amber: #d9913c;
+  --rec-green: #34c759;
+
+  --ink-92: rgba(255, 255, 255, .92);
+  --ink-60: rgba(255, 255, 255, .60);
+  --ink-42: rgba(255, 255, 255, .42);
+  --ink-24: rgba(255, 255, 255, .24);
+  --ink-12: rgba(255, 255, 255, .12);
+
+  --tick-minor: rgba(255, 255, 255, .20);
+  --tick-major: rgba(255, 255, 255, .42);
+  --selected-fill: rgba(201, 163, 91, .16);
+  --inactive-fill: rgba(255, 255, 255, .05);
+  --viewfinder-scrim: rgba(0, 0, 0, .54);
+  --viewfinder-scrim-border: rgba(255, 255, 255, .16);
+  --toggle-track-off: rgba(255, 255, 255, .16);
+
+  /* Type */
+  --font-num: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-label: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Metrics */
+  --grid: 8px;
+  --dial-step: 25px;
+  --tap-min: 48px;
+  --selected-border: 1.5px;
+  --r-sheet: 22px;
+  --r-control: 13px;
+  --r-chip: 11px;
+
+  /* Motion */
+  --t-dial: .12s;
+  --t-overlay: .20s;
+  --t-sheet: .30s;
+  --t-flash: .38s;
+  --t-shutter-press: .09s;
+  --t-meter-linger: 1.1s;
+  --t-focus-hide: 1.5s;
+  --t-long-press: .48s;
+  --ease-dial: cubic-bezier(.2, .7, .2, 1);
+  --ease-sheet: cubic-bezier(.2, .8, .2, 1);
+}

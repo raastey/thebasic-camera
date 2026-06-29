@@ -60,31 +60,31 @@ const thumbStyle = photo
 const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
 ---
 
-<div class={`capture-mock ${className}`} style="width:300px;height:664px;background:#000;border-radius:42px;position:relative;overflow:hidden;box-shadow:0 0 0 8px #1b1b1d,0 0 0 9px #050506;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif; user-select:none;">
+<div class={`capture-mock ${className}`} style="width:300px;height:664px;background:var(--chrome);border-radius:42px;position:relative;overflow:hidden;box-shadow:0 0 0 8px #1b1b1d,0 0 0 9px #050506;display:flex;flex-direction:column;font-family:var(--font-label); user-select:none;">
 
   <!-- status bar -->
-  <div style="height:32px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px 0 26px;color:#fff;">
+  <div style="height:32px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px 0 26px;color:var(--cream);">
     <div class="mono" style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;">9:41</div>
     <div style="display:flex;align-items:center;gap:5px;opacity:.92;">
-      <svg width="15" height="9" viewBox="0 0 18 11" fill="#fff">
+      <svg width="15" height="9" viewBox="0 0 18 11" fill="var(--cream)">
         <rect x="0" y="7" width="3" height="4" rx="1"/>
         <rect x="5" y="4.5" width="3" height="6.5" rx="1"/>
         <rect x="10" y="2" width="3" height="9" rx="1"/>
         <rect x="15" y="0" width="3" height="11" rx="1"/>
       </svg>
-      <div style="width:19px;height:10px;border:1.2px solid rgba(255,255,255,.5);border-radius:3px;position:relative;">
-        <div style="position:absolute;left:1.2px;top:1.2px;bottom:1.2px;width:13px;background:#fff;border-radius:1.4px;"></div>
+      <div style="width:19px;height:10px;border:1.2px solid var(--ink-60);border-radius:3px;position:relative;">
+        <div style="position:absolute;left:1.2px;top:1.2px;bottom:1.2px;width:13px;background:var(--cream);border-radius:1.4px;"></div>
       </div>
     </div>
   </div>
 
   <!-- viewfinder 4:3 (300x400) -->
-  <div style="width:300px;height:400px;flex:none;position:relative;background:#0d0d0e;overflow:hidden;">
+  <div style="width:300px;height:400px;flex:none;position:relative;background:var(--viewfinder);overflow:hidden;">
     <div style="position:absolute;inset:0;">
       {photo ? (
         <div style={photoStyle}></div>
       ) : (
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:1px;font-family:'SF Mono',monospace;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--ink-42);font-size:12px;font-weight:600;letter-spacing:1px;font-family:var(--font-num);">
           {placeholder}
         </div>
       )}
@@ -92,38 +92,38 @@ const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
 
     <!-- exposure meter (S mode only) -->
     {mode === 'S' && (
-      <div style="position:absolute;bottom:56px;left:50%;transform:translateX(-50%);width:160px;background:rgba(8,8,10,0.82);border-radius:6px;padding:8px 12px 6px;display:flex;flex-direction:column;align-items:center;gap:3px;backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.06); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
-        <span style="font-size:10px;font-weight:700;color:#C9A35B;letter-spacing:0.5px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;text-shadow:0 1px 2px rgba(0,0,0,0.5);">0.0 EV</span>
+      <div style="position:absolute;bottom:56px;left:50%;transform:translateX(-50%);width:160px;background:rgba(8,8,10,0.82);border-radius:6px;padding:8px 12px 6px;display:flex;flex-direction:column;align-items:center;gap:3px;backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid var(--viewfinder-scrim-border); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+        <span style="font-size:10px;font-weight:700;color:var(--brass);letter-spacing:0.5px;font-family:var(--font-num);text-shadow:0 1px 2px rgba(0,0,0,0.5);">0.0 EV</span>
         <div style="position:relative;width:120px;height:12px;margin-top:2px;">
           <!-- Rail -->
-          <div style="position:absolute;bottom:2px;left:0;right:0;height:1px;background:rgba(255,255,255,0.15);"></div>
+          <div style="position:absolute;bottom:2px;left:0;right:0;height:1px;background:var(--toggle-track-off);"></div>
           <!-- Center major tick -->
-          <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:1px;height:11px;background:rgba(255,255,255,0.5);"></div>
+          <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:1px;height:11px;background:var(--ink-60);"></div>
           <!-- Minor ticks -->
-          <div style="position:absolute;bottom:2px;left:0px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
-          <div style="position:absolute;bottom:2px;left:20px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
-          <div style="position:absolute;bottom:2px;left:40px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
-          <div style="position:absolute;bottom:2px;right:40px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
-          <div style="position:absolute;bottom:2px;right:20px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
-          <div style="position:absolute;bottom:2px;right:0px;width:1px;height:5px;background:rgba(255,255,255,0.2);"></div>
+          <div style="position:absolute;bottom:2px;left:0px;width:1px;height:5px;background:var(--tick-minor);"></div>
+          <div style="position:absolute;bottom:2px;left:20px;width:1px;height:5px;background:var(--tick-minor);"></div>
+          <div style="position:absolute;bottom:2px;left:40px;width:1px;height:5px;background:var(--tick-minor);"></div>
+          <div style="position:absolute;bottom:2px;right:40px;width:1px;height:5px;background:var(--tick-minor);"></div>
+          <div style="position:absolute;bottom:2px;right:20px;width:1px;height:5px;background:var(--tick-minor);"></div>
+          <div style="position:absolute;bottom:2px;right:0px;width:1px;height:5px;background:var(--tick-minor);"></div>
           <!-- Needle -->
-          <div style="position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid #C9A35B;"></div>
+          <div style="position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid var(--brass);"></div>
         </div>
       </div>
     )}
 
     <!-- mode letter -->
-    <div style="position:absolute;top:11px;left:13px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.4px solid #C9A35B;border-radius:7px;color:#C9A35B;font-size:15px;font-weight:700;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;background:rgba(0,0,0,.28);backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);">
+    <div style="position:absolute;top:11px;left:13px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.4px solid var(--brass);border-radius:7px;color:var(--brass);font-size:15px;font-weight:700;font-family:var(--font-num);background:rgba(0,0,0,.28);backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);">
       {mode}
     </div>
 
     <!-- readout -->
     <div class="mono" style="position:absolute;top:11px;right:13px;text-align:right;text-shadow:0 1px 4px rgba(0,0,0,.7);">
-      <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.2px;">{shutter} <span style="color:rgba(255,255,255,.55);">·</span> {ap}</div>
+      <div style="font-size:12.5px;font-weight:600;color:var(--ink-92);letter-spacing:.2px;">{shutter} <span style="color:var(--ink-60);">·</span> {ap}</div>
       {mode === 'S' ? (
-        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>{isoMaxed ? 'OVER' : '0.0 EV'}</div>
+        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? 'var(--amber)' : 'var(--ink-60)'};`}>{isoMaxed ? 'OVER' : '0.0 EV'}</div>
       ) : (
-        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? '#D9913C' : 'rgba(255,255,255,.6)'};`}>{isoMaxed ? 'ISO MAX' : `ISO ${iso}`}</div>
+        <div style={`font-size:11px;font-weight:600;margin-top:2px;letter-spacing:.4px;color:${isoMaxed ? 'var(--amber)' : 'var(--ink-60)'};`}>{isoMaxed ? 'ISO MAX' : `ISO ${iso}`}</div>
       )}
     </div>
 
@@ -139,45 +139,45 @@ const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
 
     <!-- lens pill / selfie indicator bottom-right -->
     {!selfie ? (
-      <div style={`position:absolute;right:12px;bottom:12px;min-width:38px;height:32px;padding:0 11px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;font-size:12px;font-weight:700;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace; ${lensDefault ? 'background:rgba(20,20,22,.5);color:rgba(255,255,255,.92);' : 'background:rgba(201,163,91,.18);border:1px solid #C9A35B;color:#C9A35B;'}`}>{lens}</div>
+      <div style={`position:absolute;right:12px;bottom:12px;min-width:38px;height:32px;padding:0 11px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;font-size:12px;font-weight:700;font-family:var(--font-num); ${lensDefault ? 'background:rgba(20,20,22,.5);color:var(--ink-92);' : 'background:var(--selected-fill);border:var(--selected-border) solid var(--brass);color:var(--brass);'}`}>{lens}</div>
     ) : (
-      <div style="position:absolute;right:12px;bottom:12px;height:32px;padding:0 12px;display:flex;align-items:center;justify-content:center;background:rgba(201,163,91,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #C9A35B;border-radius:16px;color:#C9A35B;font-size:11px;font-weight:700;letter-spacing:1px;font-family:'SF Mono',SFMono-Regular,ui-monospace,Menlo,monospace;">SELF</div>
+      <div style="position:absolute;right:12px;bottom:12px;height:32px;padding:0 12px;display:flex;align-items:center;justify-content:center;background:var(--selected-fill);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:var(--selected-border) solid var(--brass);border-radius:16px;color:var(--brass);font-size:11px;font-weight:700;letter-spacing:1px;font-family:var(--font-num);">SELF</div>
     )}
   </div>
 
   <!-- chrome -->
-  <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:#000;padding-bottom:6px;">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:var(--chrome);padding-bottom:6px;">
 
-    <!-- big value -->
-    <div class="mono" style={`height:46px;flex:none;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:600;letter-spacing:.5px; color:${(mode === 'S' && (shutter === '1/2000' || shutter === '1/4000')) ? '#D9913C' : 'rgba(255,255,255,.92)'}`}>{finalBigValue}</div>
+  <!-- big value -->
+  <div class="mono" style={`height:46px;flex:none;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:600;letter-spacing:.5px; color:${(mode === 'S' && (shutter === '1/2000' || shutter === '1/4000')) ? 'var(--amber)' : 'var(--ink-92)'}`}>{finalBigValue}</div>
 
     <!-- ruler -->
     <div style="position:relative;height:38px;flex:none;overflow:hidden;">
       <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);">
-        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 1px,transparent 1px 11px);"></div>
-        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.42) 0 1.5px,transparent 1.5px 44px);"></div>
+        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,var(--tick-minor) 0 1px,transparent 1px 11px);"></div>
+        <div style="position:absolute;left:0;top:50%;width:100%;height:26px;transform:translateY(-50%);background-repeat:repeat-x;background-position:center;background-image:repeating-linear-gradient(90deg,var(--tick-major) 0 1.5px,transparent 1.5px 44px);"></div>
       </div>
-      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:2px;height:26px;background:#C9A35B;box-shadow:0 0 7px rgba(201,163,91,.6);border-radius:1px;"></div>
-      <div style="position:absolute;left:50%;top:5px;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #C9A35B;"></div>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:2px;height:26px;background:var(--brass);box-shadow:0 0 7px rgba(201,163,91,.6);border-radius:1px;"></div>
+      <div style="position:absolute;left:50%;top:5px;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--brass);"></div>
     </div>
 
     <!-- status strip -->
-    <div class="mono" style="height:24px;flex:none;display:flex;align-items:center;justify-content:center;gap:20px;font-size:11px;font-weight:600;letter-spacing:.8px;color:rgba(255,255,255,.42);">
+    <div class="mono" style="height:24px;flex:none;display:flex;align-items:center;justify-content:center;gap:20px;font-size:11px;font-weight:600;letter-spacing:.8px;color:var(--ink-42);">
       <svg width="9" height="12" viewBox="0 0 11 14" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.4" stroke-linejoin="round">
         <path d="M6 1 1.5 8H5l-1 5 5.5-7.5H6L6 1Z"/>
         <line x1="1" y1="13" x2="10" y2="1" stroke-width="1.1"/>
       </svg>
       <div>4:3</div>
-      <div style="color:rgba(255,255,255,.78);letter-spacing:1.2px;">{look.toUpperCase()}</div>
+      <div style="color:var(--ink-92);letter-spacing:1.2px;">{look.toUpperCase()}</div>
     </div>
 
     <!-- bottom bar -->
     <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;">
       <div style={`width:42px;height:42px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.14);flex:none; ${thumbStyle}`}></div>
-      <div style="width:48px;height:48px;border-radius:50%;background:#F3EEE3;border:2px solid #C9A35B;box-shadow:0 0 0 3px #000,0 0 18px rgba(201,163,91,.22);display:flex;align-items:center;justify-content:center;">
+      <div style="width:48px;height:48px;border-radius:50%;background:var(--cream);border:2px solid var(--brass);box-shadow:0 0 0 3px #000,0 0 18px rgba(201,163,91,.22);display:flex;align-items:center;justify-content:center;">
         <div style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.12);"></div>
       </div>
-      <div class="mono" style={`width:42px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:${isDNG ? '#C9A35B' : 'rgba(255,255,255,.6)'};`}>
+      <div class="mono" style={`width:42px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:${isDNG ? 'var(--brass)' : 'var(--ink-60)'};`}>
         {actualFormat}
       </div>
     </div>
