@@ -33,15 +33,15 @@ const gestures = [
   { g: 'Tap mode letter', a: 'Toggle S ↔ A, instant' },
   { g: 'Tap 4:3', a: 'Toggle rule-of-thirds grid, histogram, and zebra' },
   { g: 'Tap ISO readout', a: 'Cycle manual ISO in S-mode (cleanest → dirtiest)' },
-  { g: 'Tap DNG / JPEG', a: 'Toggle format (S-mode rear only; A-mode locks to JPEG)' },
-  { g: 'Tap flip', a: 'Switch rear ↔ selfie (locks format to JPEG)' },
+  { g: 'Tap LARGE / SMALL', a: 'Toggle size (rear S and A; selfie locks to SMALL)' },
+  { g: 'Tap flip', a: 'Switch rear ↔ selfie (locks size to SMALL)' },
   { g: 'Double-tap dial', a: 'Reset dial to 1/250 (S) or 0.0 EV (A)' },
   { g: 'Action Button', a: 'Cycle look when in foreground' },
 ];
 
 const specs = [
   { k: 'Modes', v: 'S (Street - Shutter priority) · A (Portrait - Locked ƒ1.4)' },
-  { k: 'Archive', v: 'ProRAW DNG (S-mode rear) or Depth JPEG (A-mode / Selfie)' },
+  { k: 'Archive', v: 'JPEG only: LARGE (~48MP sensor escalation) or SMALL (~12MP virtual)' },
   { k: 'Looks', v: 'Mono · Faded · Neutral' },
   { k: 'Metering', v: '±EV meter, CPU histogram, highlight zebra (S-mode)' },
   { k: 'Low-light', v: 'Automatic JPEG frame averaging (STACK) in S-mode' },
@@ -74,16 +74,16 @@ const specs = [
       <div class="hero-content">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:26px;">A colour priority-mode camera for iPhone</div>
         <h1 class="hero-title">Shoot the street,<br /><span style="font-style:italic;color:#C9A35B;">not the menus.</span></h1>
-        <p class="hero-description">The camera is the simplest instrument a photographer carries, and the most honest. basic gives you <span style="color:#F3EEE3;">shutter priority and aperture priority</span>, one ruler, one cream shutter, nothing between you and the frame. Shoot ProRAW DNG or JPEG.</p>
+        <p class="hero-description">The camera is the simplest instrument a photographer carries, and the most honest. basic gives you <span style="color:#F3EEE3;">shutter priority and aperture priority</span>, one ruler, one cream shutter, nothing between you and the frame. Shoot Large or Small JPEG.</p>
         <div class="hero-buttons">
           <a href="#get" class="btn-primary">Coming Soon on the App Store</a>
           <a href="#ruler" class="btn-secondary">See how it feels →</a>
         </div>
-        <div class="mono hero-subtext">Apple ProRAW DNG or JPEG · In colour · iPhone 14 Pro Max and later</div>
+        <div class="mono hero-subtext">Large or Small JPEG · In colour · iPhone 14 Pro Max and later</div>
       </div>
       <div class="hero-mockup">
         <div class="rotate-wrap-right">
-          <CaptureMock slotId="hero-shot" photo="/images/hero-car.jpg" pos="center 78%" placeholder="DROP A STREET FRAME" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" look="Neutral" />
+          <CaptureMock slotId="hero-shot" photo="/images/hero-car.jpg" pos="center 78%" placeholder="DROP A STREET FRAME" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="LARGE" look="Neutral" />
         </div>
       </div>
     </header>
@@ -162,7 +162,7 @@ const specs = [
         </div>
         <div>
           <div class="mono essay-tag">On the file</div>
-          <p class="essay-text">basic offers ProRAW DNG on rear in S-mode—untouched, exactly what the sensor saw. A-mode and selfie mode save JPEGs. In A-mode, the JPEG embeds native depth map details for post-capture adjustments.</p>
+          <p class="essay-text">basic shoots JPEGs in Large (~48MP sensor escalation) or Small (~12MP virtual preview) sizes. The live look is baked in. In A-mode, the JPEG embeds native depth map details for focus control after the shot.</p>
         </div>
       </div>
     </section>
@@ -171,25 +171,25 @@ const specs = [
     <section id="looks" class="looks-section reveal">
       <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Looks render live</div>
       <h2 class="looks-title">Compose in the look.</h2>
-      <p class="looks-description">basic is a colour camera. The viewfinder shows true colour by default, Neutral. Mono is a choice, not the identity. The look renders live; in DNG the ProRAW file saves exactly as the sensor produced it, in JPEG the look is baked in. Swipe down on the frame to cycle looks; the Action Button toggles without moving the phone.</p>
+      <p class="looks-description">basic is a colour camera. The viewfinder shows true colour by default, Neutral. Mono is a choice, not the identity. The look renders live and is baked directly into the saved JPEG in both Large and Small modes. Swipe down on the frame to cycle looks; the Action Button toggles without moving the phone.</p>
 
       <div class="looks-grid">
         <div class="look-card">
-          <div class="mockup-wrap"><CaptureMock slotId="look-shot-neutral" photo="/images/look-boat.jpg" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-neutral" photo="/images/look-boat.jpg" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="LARGE" /></div>
           <div class="look-info">
             <div class="look-name">Neutral <span class="look-tag default">· DEFAULT</span></div>
             <p class="look-desc">Display P3, colour-managed, no curve, true colour, exactly as the sensor saw it. basic is a colour camera first; this is it out of the box.</p>
           </div>
         </div>
         <div class="look-card">
-          <div class="mockup-wrap"><CaptureMock slotId="look-shot-faded" photo="/images/look-boat.jpg" look="Faded" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" /></div>
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-faded" photo="/images/look-boat.jpg" look="Faded" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="SMALL" /></div>
           <div class="look-info">
             <div class="look-name">Faded</div>
             <p class="look-desc">Muted colour, warm shadows, restrained saturation. A quiet, filmic frame. The look of a photograph that has been somewhere and come back.</p>
           </div>
         </div>
         <div class="look-card">
-          <div class="mockup-wrap"><CaptureMock slotId="look-shot-mono" photo="/images/look-boat.jpg" look="Mono" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="JPEG" /></div>
+          <div class="mockup-wrap"><CaptureMock slotId="look-shot-mono" photo="/images/look-boat.jpg" look="Mono" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="SMALL" /></div>
           <div class="look-info">
             <div class="look-name">Mono <span class="look-tag optional">· OPTIONAL</span></div>
             <p class="look-desc">High-acuity black and white when you want it. Deep blacks, gentle highlight roll-off. A choice you reach for, never the whole product.</p>
@@ -199,7 +199,7 @@ const specs = [
 
       <div class="looks-note">
         <div class="mono" style="font-size:11px;letter-spacing:2px;color:#C9A35B;flex:none;margin-top:2px;">NOTE</div>
-        <p style="font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);margin:0;">Looks apply to the live viewfinder always. In DNG mode the ProRAW file written to your library is never modified by any look, at any time, in any mode. In JPEG mode the look you see is baked into the saved file.</p>
+        <p style="font-size:14px;line-height:1.65;color:rgba(243,238,227,.6);margin:0;">Looks apply to the live viewfinder always. The look you see in the viewfinder is baked directly into the saved JPEG in both Large and Small modes.</p>
       </div>
     </section>
 
@@ -282,16 +282,16 @@ const specs = [
     <section class="selfie-section reveal">
       <div class="selfie-mockup">
         <div class="rotate-wrap-left">
-          <CaptureMock slotId="selfie-shot" photo="/images/selfie.jpg" pos="46% 34%" selfie={true} mode="A" shutter="1/120" ap="ƒ2.2" iso="320" bigValue="ƒ2.8" look="Neutral" format="JPEG" />
+          <CaptureMock slotId="selfie-shot" photo="/images/selfie.jpg" pos="46% 34%" selfie={true} mode="A" shutter="1/120" ap="ƒ2.2" iso="320" bigValue="ƒ2.8" look="Neutral" format="SMALL" />
         </div>
       </div>
       <div class="selfie-content">
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">Rear and front</div>
         <h2 class="selfie-title">Flip it around.</h2>
         <p style="font-size:18px;line-height:1.7;color:rgba(243,238,227,.66);max-width:520px;margin:0 0 20px;">The flip control sits bottom-left of the frame, exactly where your thumb expects it. The same S/A dial, the same looks, the same cream shutter, pointed the other way.</p>
-        <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:520px;margin:0 0 28px;">The front camera shoots <span style="color:#F3EEE3;">JPEG only</span>, Apple's front sensor doesn't offer ProRAW, and basic won't fake a DNG it can't produce. Flip back and your rear lens and format are restored exactly as you left them.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(243,238,227,.5);max-width:520px;margin:0 0 28px;">The front camera shoots <span style="color:#F3EEE3;">Small JPEG only</span>, locked at standard resolution. Flip back and your rear lens and last chosen format size (Large or Small) are restored exactly as you left them.</p>
         <div class="mono selfie-stats">
-          <div><span style="color:#C9A35B;">FORMAT</span><br /><span style="color:#F3EEE3;font-size:14px;">JPEG, locked</span></div>
+          <div><span style="color:#C9A35B;">SIZE</span><br /><span style="color:#F3EEE3;font-size:14px;">SMALL, locked</span></div>
           <div><span style="color:#C9A35B;">CONTROL</span><br /><span style="color:#F3EEE3;font-size:14px;">Bottom-left flip</span></div>
           <div><span style="color:#C9A35B;">LOOKS</span><br /><span style="color:#F3EEE3;font-size:14px;">All three</span></div>
         </div>
@@ -327,9 +327,9 @@ const specs = [
         <div class="mono" style="font-size:12px;letter-spacing:3px;color:#C9A35B;text-transform:uppercase;margin-bottom:20px;">The app</div>
         <h2 class="app-title">One screen. The whole app.</h2>
         <div class="app-mockups">
-          <div class="app-mock-wrap app-left"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="DNG" /></div>
-          <div class="app-mock-wrap app-mid"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="JPEG" /></div>
-          <div class="app-mock-wrap app-right"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="JPEG" /></div>
+          <div class="app-mock-wrap app-left"><CaptureMock slotId="app-1" photo="/images/app-marine.jpg" pos="center 50%" look="Neutral" mode="S" shutter="1/500" ap="ƒ1.8" iso="200" bigValue="1/500" lens="1×" format="LARGE" /></div>
+          <div class="app-mock-wrap app-mid"><CaptureMock slotId="app-2" photo="/images/app-bar.jpg" pos="46% 50%" size="auto 132%" look="Mono" mode="A" shutter="1/250" ap="ƒ4" iso="400" bigValue="ƒ4" lens="2×" format="LARGE" /></div>
+          <div class="app-mock-wrap app-right"><CaptureMock slotId="app-3" photo="/images/app-monk.jpg" pos="center 30%" look="Faded" mode="S" shutter="1/1000" ap="ƒ1.8" iso="100" bigValue="1/1000" lens="1×" format="SMALL" /></div>
         </div>
       </div>
     </section>

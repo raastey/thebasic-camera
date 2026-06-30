@@ -12,7 +12,7 @@ interface Props {
   bigValue?: string;
   lens?: string;
   look?: 'Neutral' | 'Mono' | 'Faded';
-  format?: 'DNG' | 'JPEG';
+  format?: 'LARGE' | 'SMALL';
   selfie?: boolean;
   isoMaxed?: boolean;
   class?: string;
@@ -31,14 +31,14 @@ const {
   bigValue,
   lens = '1×',
   look = 'Neutral',
-  format = 'DNG',
+  format = 'LARGE',
   selfie = false,
   isoMaxed = false,
   class: className = '',
 } = Astro.props;
 
-const actualFormat = (selfie || mode === 'A') ? 'JPEG' : format;
-const isDNG = actualFormat === 'DNG';
+const actualFormat = selfie ? 'SMALL' : format;
+const isLarge = actualFormat === 'LARGE';
 const lensDefault = lens === '1×';
 
 // Compute the filter style for the active look
@@ -177,7 +177,7 @@ const finalBigValue = bigValue || (mode === 'A' ? 'ƒ4' : '1/500');
       <div style="width:48px;height:48px;border-radius:50%;background:var(--cream);border:2px solid var(--brass);box-shadow:0 0 0 3px #000,0 0 18px rgba(201,163,91,.22);display:flex;align-items:center;justify-content:center;">
         <div style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.12);"></div>
       </div>
-      <div class="mono" style={`width:42px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:${isDNG ? 'var(--brass)' : 'var(--ink-60)'};`}>
+      <div class="mono" style={`width:54px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:${isLarge ? 'var(--brass)' : 'var(--ink-60)'};`}>
         {actualFormat}
       </div>
     </div>
